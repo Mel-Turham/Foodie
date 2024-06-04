@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "^2.4.1",
+    "@tanstack/react-query": "^5.40.1",
     "axios": "^1.7.2",
     "json-server": "1.0.0-beta.0",
     "react": "^18.2.0",
