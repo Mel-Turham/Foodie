@@ -29,7 +29,7 @@ const Home = () => {
 
 	return (
 		<main className='w-full pb-5 bg-gray-100'>
-			<section className='relative flex w-full min-h-screen text-white bg-center bg-cover lg:pb-32 sm:items-center sm:pb-0 lg:items-end texpxt-white md:px-8 lg:px-10 hero sm:px-2'>
+			<section className='relative flex w-full text-white bg-center bg-cover min-h-[80vh] lg:pb-20 sm:items-center sm:pb-0 lg:items-end texpxt-white md:px-8 lg:px-10 hero sm:px-2'>
 				<div className='container z-10 '>
 					<h2 className='font-semibold text-gray-100 text-7xl'>
 						Commande ta nourriture <br /> favorite ici!

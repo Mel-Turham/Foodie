@@ -22,8 +22,8 @@ const Navbar = () => {
 	];
 
 	return (
-		<header className='fixed top-0 left-0 z-20 flex items-center justify-between w-full px-5 py-5 bg-white shadow-md'>
-			<h1 className='font-bold text-[2rem] '>Foodie</h1>
+		<header className='fixed top-0 left-0 z-20 flex items-center justify-between w-full px-8 py-4 bg-white shadow-md'>
+			<h1 className='font-bold text-[1.7rem] '>Foodie</h1>
 			<nav className='flex items-center justify-center gap-3 '>
 				{Links.map((link) => {
 					return (
