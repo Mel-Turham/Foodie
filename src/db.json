@@ -1,36 +1,36 @@
 {
 	"menu_lists": [
 		{
-			" menu_name": "Salad",
-			" menu_image": "assets/menu/menu_1.png"
+			"menu_name": "Salad",
+			"menu_image": "../src/assets/menu/menu_1.png"
 		},
 		{
-			" menu_name": "Rolls",
-			" menu_image": "assets/menu/menu_2.png"
+			"menu_name": "Rolls",
+			"menu_image": "../src/assets/menu/menu_2.png"
 		},
 		{
-			" menu_name": "Dessert",
-			" menu_image": "assets/menu/menu_3.png"
+			"menu_name": "Deserts",
+			"menu_image": "../src/assets/menu/menu_3.png"
 		},
 		{
-			" menu_name": "Sandwich",
-			" menu_image": "assets/menu/menu_4.png"
+			"menu_name": "Sandwich",
+			"menu_image": "../src/assets/menu/menu_4.png"
 		},
 		{
-			" menu_name": "Cake",
-			" menu_image": "assets/menu/menu_5.png"
+			"menu_name": "Cake",
+			"menu_image": "../src/assets/menu/menu_5.png"
 		},
 		{
-			" menu_name": "Pure Veg",
-			" menu_image": "assets/menu/menu_6.png"
+			"menu_name": "Pure Veg",
+			"menu_image": "../src/assets/menu/menu_6.png"
 		},
 		{
-			" menu_name": "Pasta",
-			" menu_image": "assets/menu/menu_7.png"
+			"menu_name": "Pasta",
+			"menu_image": "../src/assets/menu/menu_7.png"
 		},
 		{
-			" menu_name": "Noodles",
-			" menu_image": "assets/menu/menu_8.png"
+			"menu_name": "Noodles",
+			"menu_image": "../src/assets/menu/menu_8.png"
 		}
 	],
 
