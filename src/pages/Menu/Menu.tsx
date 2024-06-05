@@ -4,6 +4,7 @@ import ComponentItem from './MenuItem';
 import { Button } from '@nextui-org/react';
 import Cart from '../../Components/Cart';
 
+
 type MenuListTypes = {
 	menu_name: string;
 	menu_image: string;
@@ -20,6 +21,7 @@ type FoodListType = {
 };
 
 const Menu = () => {
+
 	const [menuList, setMenuList] = useState<MenuListTypes[]>([]);
 	const [activeItem, setActiveItem] = useState<string | null>(null);
 	const [foodList, setFoodList] = useState<FoodListType[]>([]);
@@ -49,7 +51,6 @@ const Menu = () => {
 	const filteredFoodList = activeItem
 		? foodList.filter((food) => food.category === activeItem)
 		: foodList;
-
 	return (
 		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100'>
 			<section className='flex flex-col justify-end min-h-[70vh] px-24 py-5'>
@@ -79,7 +80,13 @@ const Menu = () => {
 						})}
 					</div>
 				</div>
-				<Button className='w-fit' color='primary' variant='shadow' size='sm' onClick={() => setActiveItem(null)}>
+				<Button
+					className='w-fit'
+					color='primary'
+					variant='shadow'
+					size='sm'
+					onClick={() => setActiveItem(null)}
+				>
 					All menu
 				</Button>
 			</section>
@@ -95,6 +102,7 @@ const Menu = () => {
 								description={plat.description}
 								category={plat.category}
 								image={plat.image}
+
 							/>
 						);
 					})}

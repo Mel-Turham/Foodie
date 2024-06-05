@@ -1,6 +1,7 @@
 import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 import { IoMdStar, IoMdStarOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+
 type CardProps = {
 	image: string;
 	price: number;
@@ -44,7 +45,7 @@ const Cart = ({ image, price, name, description, category, id }: CardProps) => {
 				<Button color='warning' size='sm'>
 					Add
 				</Button>
-				<Link to={`plat/${id}`}>
+				<Link to={`/plat/${id}`}>
 					<Button color='primary' size='sm'>
 						See detail
 					</Button>
