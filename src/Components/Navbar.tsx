@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
-
+import { FaBagShopping } from 'react-icons/fa6';
+import { Button } from '@nextui-org/react';
 interface LinksProps {
 	path: string;
 	label: string;
@@ -41,8 +42,23 @@ const Navbar = () => {
 					);
 				})}
 			</nav>
-			<div>
-				<i>icons goes there</i>
+			<div className='flex items-center justify-center gap-3'>
+				<div className='relative flex items-center justify-center w-6 h-6'>
+					<i className='grid w-full h-full place-content-center'>
+						<FaBagShopping className='w-6 h-6' />
+					</i>
+					<span className='absolute flex items-center justify-center w-5 h-5 text-white bg-red-600 rounded-full -right-2 -top-2'>
+						0
+					</span>
+				</div>
+				<Button
+					size='sm'
+					variant='ghost'
+					className='font-semibold'
+					color='primary'
+				>
+					Login
+				</Button>
 			</div>
 		</header>
 	);
