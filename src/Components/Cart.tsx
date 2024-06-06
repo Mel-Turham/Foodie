@@ -1,17 +1,35 @@
 import { Button, Card, CardBody, CardFooter, Image } from '@nextui-org/react';
 import { IoMdStar, IoMdStarOutline } from 'react-icons/io';
 import { Link } from 'react-router-dom';
+type CartItem = {
+	id: number;
+	name: string;
+	price: number;
+	quantity: number;
+	image: string;
+	description?: string;
+	category?: string;
+};
 
 type CardProps = {
 	image: string;
 	price: number;
 	name: string;
-	description: string;
-	category: string;
+	description?: string;
+	category?: string;
 	id: number;
+	addToCart: (item: CartItem) => void;
 };
 
-const Cart = ({ image, price, name, description, category, id }: CardProps) => {
+const Cart = ({
+	image,
+	price,
+	name,
+	description,
+	category,
+	id,
+	addToCart,
+}: CardProps) => {
 	return (
 		<Card className='p-2 pb-4' radius='none' shadow='none'>
 			<figure className='w-full overflow-hidden h-[200px] '>
@@ -19,7 +37,6 @@ const Cart = ({ image, price, name, description, category, id }: CardProps) => {
 					isZoomed
 					loading='lazy'
 					src={image}
-					isLoading={image ? false : true}
 					width={300}
 					height={200}
 					radius='none'
@@ -42,7 +59,11 @@ const Cart = ({ image, price, name, description, category, id }: CardProps) => {
 				<span className='font-bold text-default-500'>{category}</span>
 			</CardFooter>
 			<div className='flex items-center justify-between '>
-				<Button color='warning' size='sm'>
+				<Button
+					onClick={() => addToCart({ image, name, price, quantity: 1, id })}
+					color='warning'
+					size='sm'
+				>
 					Add
 				</Button>
 				<Link to={`/plat/${id}`}>

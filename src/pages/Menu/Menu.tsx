@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import ComponentItem from './MenuItem';
 import { Button } from '@nextui-org/react';
 import Cart from '../../Components/Cart';
-
+import useCartStore from '../../store/useCartStore';
 
 type MenuListTypes = {
 	menu_name: string;
@@ -21,10 +21,13 @@ type FoodListType = {
 };
 
 const Menu = () => {
-
 	const [menuList, setMenuList] = useState<MenuListTypes[]>([]);
 	const [activeItem, setActiveItem] = useState<string | null>(null);
 	const [foodList, setFoodList] = useState<FoodListType[]>([]);
+	const addToCart = useCartStore((state) => state.addToCart);
+  
+
+  
 
 	useEffect(() => {
 		const FetchListMenu = async () => {
@@ -102,7 +105,7 @@ const Menu = () => {
 								description={plat.description}
 								category={plat.category}
 								image={plat.image}
-
+								addToCart={addToCart}
 							/>
 						);
 					})}

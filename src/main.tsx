@@ -4,11 +4,14 @@ import App from './App.tsx';
 import './index.css';
 import { NextUIProvider } from '@nextui-org/react';
 import { Toaster } from 'react-hot-toast';
+import { ContextProvider } from './Context/contextToggle.tsx';
 ReactDOM.createRoot(document.getElementById('root')!).render(
 	<React.StrictMode>
-		<NextUIProvider>
-			<App />
-			<Toaster position='top-center' reverseOrder={false} />
-		</NextUIProvider>
+		<ContextProvider>
+			<NextUIProvider>
+				<App />
+				<Toaster position='top-center' reverseOrder={false} />
+			</NextUIProvider>
+		</ContextProvider>
 	</React.StrictMode>,
 );
