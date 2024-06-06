@@ -1,11 +1,16 @@
 import { NavLink } from 'react-router-dom';
 import { FaBagShopping } from 'react-icons/fa6';
 import { Button } from '@nextui-org/react';
+import { useToggleContext } from '../Context/contextToggle';
+import useCartStore from '../store/useCartStore';
 interface LinksProps {
 	path: string;
 	label: string;
 }
+
 const Navbar = () => {
+	const { setToggle } = useToggleContext();
+	const cart = useCartStore((state) => state.cart);
 	const Links: LinksProps[] = [
 		{
 			path: '/',
@@ -43,12 +48,15 @@ const Navbar = () => {
 				})}
 			</nav>
 			<div className='flex items-center justify-center gap-3'>
-				<div className='relative flex items-center justify-center w-6 h-6'>
+				<div
+					className='relative flex items-center justify-center w-6 h-6 cursor-pointer'
+					onClick={() => setToggle(true)}
+				>
 					<i className='grid w-full h-full place-content-center'>
 						<FaBagShopping className='w-6 h-6' />
 					</i>
 					<span className='absolute flex items-center justify-center w-5 h-5 text-white bg-red-600 rounded-full -right-2 -top-2'>
-						0
+						{cart.length}
 					</span>
 				</div>
 				<Button
