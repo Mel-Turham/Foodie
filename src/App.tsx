@@ -1,6 +1,14 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './Layout/Layout';
-import { Contact, ErrorPage, Home, Menu, PlatDetails } from './pages';
+import {
+	Contact,
+	ErrorPage,
+	Home,
+	Login,
+	Menu,
+	PlatDetails,
+	Register,
+} from './pages';
 import { useEffect } from 'react';
 import { useToggleContext } from './Context/contextToggle';
 import useCartStore from './store/useCartStore';
@@ -30,6 +38,8 @@ const App = () => {
 					<Route path='contact' element={<Contact />} />
 				</Route>
 				<Route path='*' element={<ErrorPage />} />
+				<Route path='/login' element={<Login />} />
+				<Route path='/register' element={<Register />} />
 			</Routes>
 		</Router>
 	);
