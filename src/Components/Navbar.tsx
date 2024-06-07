@@ -1,14 +1,23 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { FaBagShopping } from 'react-icons/fa6';
-import { Button } from '@nextui-org/react';
+import {
+	Avatar,
+	Button,
+	Dropdown,
+	DropdownItem,
+	DropdownMenu,
+	DropdownTrigger,
+} from '@nextui-org/react';
 import { useToggleContext } from '../Context/contextToggle';
 import useCartStore from '../store/useCartStore';
+import useUserStore from '../store/useUserStore';
 interface LinksProps {
 	path: string;
 	label: string;
 }
 
 const Navbar = () => {
+	const user = useUserStore((state) => state.user);
 	const { setToggle } = useToggleContext();
 	const cart = useCartStore((state) => state.cart);
 	const Links: LinksProps[] = [
@@ -59,14 +68,44 @@ const Navbar = () => {
 						{cart.length}
 					</span>
 				</div>
-				<Button
-					size='sm'
-					variant='ghost'
-					className='font-semibold'
-					color='primary'
-				>
-					Login
-				</Button>
+
+				{user ? (
+					<div>
+						<Dropdown placement='bottom-end'>
+							<DropdownTrigger>
+								<Avatar
+									isBordered
+									as='button'
+									className='transition-transform'
+									color='secondary'
+									name={user.name}
+									size='sm'
+									src={user.avatar}
+								/>
+							</DropdownTrigger>
+							<DropdownMenu aria-label='Profile Actions' variant='flat'>
+								<DropdownItem key='profile' className='gap-2 h-14'>
+									<p className='font-semibold'>{user.name}</p>
+									<p className='font-semibold'>{user.email}</p>
+								</DropdownItem>
+								<DropdownItem key='logout' color='danger'>
+									Log Out
+								</DropdownItem>
+							</DropdownMenu>
+						</Dropdown>
+					</div>
+				) : (
+					<Link to='/login'>
+						<Button
+							size='sm'
+							variant='ghost'
+							className='font-semibold'
+							color='primary'
+						>
+							Login
+						</Button>
+					</Link>
+				)}
 			</div>
 		</header>
 	);
