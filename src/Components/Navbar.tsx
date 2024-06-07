@@ -11,6 +11,7 @@ import {
 import { useToggleContext } from '../Context/contextToggle';
 import useCartStore from '../store/useCartStore';
 import useUserStore from '../store/useUserStore';
+import toast from 'react-hot-toast';
 interface LinksProps {
 	path: string;
 	label: string;
@@ -20,6 +21,8 @@ const Navbar = () => {
 	const user = useUserStore((state) => state.user);
 	const { setToggle } = useToggleContext();
 	const cart = useCartStore((state) => state.cart);
+
+	const logoutUser = useUserStore((state) => state.logoutUser);
 	const Links: LinksProps[] = [
 		{
 			path: '/',
@@ -89,7 +92,17 @@ const Navbar = () => {
 									<p className='font-semibold'>{user.email}</p>
 								</DropdownItem>
 								<DropdownItem key='logout' color='danger'>
-									Log Out
+									<Button
+										variant='solid'
+										color='danger'
+										onClick={() => {
+											logoutUser();
+											toast.success(`Vous vous deconnectez avec success ${user.name}`)
+										}}
+										size='sm'
+									>
+										Log out
+									</Button>
 								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
