@@ -1,7 +1,11 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as z from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import useUserStore from '../../../store/useUserStore';
+import toast from 'react-hot-toast';
+import { useState } from 'react';
+import { Spinner } from '@nextui-org/react';
 
 const LoginSchema = z.object({
 	email: z.string().email('Please provide the valide email'),
@@ -14,6 +18,9 @@ const LoginSchema = z.object({
 type ILoginForm = z.infer<typeof LoginSchema>;
 
 const Login = () => {
+	const loginUser = useUserStore((state) => state.loginUser);
+	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const {
 		register,
 		handleSubmit,
@@ -23,10 +30,24 @@ const Login = () => {
 		resolver: zodResolver(LoginSchema),
 	});
 
-	const onSubmit = (data: ILoginForm) => {
+	const onSubmit = async (data: ILoginForm) => {
 		const { email, password } = data;
-		alert(`${email},  ${password}`);
-		reset();
+		setIsLoading(true);
+		try {
+			await loginUser(email, password);
+			setTimeout(() => {
+				toast.success('Connexion réussie');
+				reset();
+				navigate('/');
+				setIsLoading(false);
+			}, 5000);
+		} catch (error) {
+			setTimeout(() => {
+				reset();
+				toast.error(`${error}`);
+				setIsLoading(false);
+			}, 5000);
+		}
 	};
 	return (
 		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300'>
@@ -74,7 +95,7 @@ const Login = () => {
 						aria-label='login-button'
 						className='block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600'
 					>
-						Login
+						{isLoading ? <Spinner color='white' /> : 'Login'}
 					</button>
 				</form>
 				<div className='flex items-center pt-4 space-x-1'>
