@@ -50,13 +50,15 @@ const Contact = () => {
 				(error) => {
 					console.log('FAILED...', error);
 					toast.error('Message not send');
+					setIslaoding(false);
+					reset();
 				},
 			);
 	};
 	return (
 		<>
-			<section className='grid grid-cols-2 gap-5 p-10 text-gray-100 mt-14 place-content-center '>
-				<div className='object-cover w-full h-full'>
+			<section className='grid h-screen grid-cols-2 gap-5 p-20 text-gray-900 10 mt-14 max-lg:px-5 place-content-center max-sm:grid-cols-1 max-md:px-2'>
+				<div className='object-cover w-full h-full max-md:hidden'>
 					<iframe
 						className='w-full h-full'
 						src='https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=ndongbon%20douala+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed'
@@ -64,7 +66,7 @@ const Contact = () => {
 				</div>
 				<form
 					onSubmit={handleSubmit(onSubmit)}
-					className='p-6 space-y-6 bg-gray-900 shadow rounde d-md '
+					className='w-full p-6 space-y-6 shadow rounde bg-indigo-50'
 				>
 					<h2 className='w-full text-3xl font-bold leading-tight'>
 						Contact us
@@ -78,7 +80,7 @@ const Contact = () => {
 							type='text'
 							placeholder='Your name'
 							{...register('name')}
-							className='block w-full p-2 bg-gray-800 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
+							className='block w-full p-2 border-2 border-gray-800 border-solid rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
 						/>
 						<span className='block text-red-600'>{errors?.name?.message}</span>
 					</div>
@@ -91,7 +93,7 @@ const Contact = () => {
 							type='text'
 							placeholder='Your subject'
 							{...register('subject')}
-							className='block w-full p-2 bg-gray-800 rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
+							className='block w-full p-2 border-2 border-gray-800 border-solid rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
 						/>
 						<span className='block text-red-600'>
 							{errors?.subject?.message}
@@ -105,7 +107,7 @@ const Contact = () => {
 							id='message'
 							placeholder='Message...'
 							{...register('message')}
-							className='block w-full p-2 bg-gray-800 rounded resize-none autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
+							className='block w-full p-2 border-2 border-gray-800 border-solid rounded resize-none autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
 						></textarea>
 						<span className='block text-red-600'>
 							{errors?.message?.message}
