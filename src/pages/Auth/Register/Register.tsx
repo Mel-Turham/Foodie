@@ -5,6 +5,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { easeInOut, motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import useUserStore from '../../../store/useUserStore';
+import { Spinner } from '@nextui-org/react';
+import { useState } from 'react';
 
 const MAX_FILE_SIZE = 5000000;
 const ACCEPTED_IMAGE_TYPES = [
@@ -43,6 +45,7 @@ const Register = () => {
 	const createUser = useUserStore((state) => state.createUser);
 	const checkUserExists = useUserStore((state) => state.checkUserExists);
 	const navigate = useNavigate();
+	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const {
 		register,
 		handleSubmit,
@@ -55,22 +58,24 @@ const Register = () => {
 	const onSubmit = async (data: IRegisterForm) => {
 		try {
 			const userExist = await checkUserExists(data.email);
-
 			if (userExist) {
 				toast.error('Un compte avec cet email existe déjà.');
 				return;
 			} else {
+				setIsLoading(true);
 				const reader = new FileReader();
 				reader.onloadend = async () => {
 					const avatar = reader.result as string;
 					await createUser({ ...data, avatar });
-					toast.success(
-						`Utilisateur creer avec success: Bienvenu ${data.name}`,
-					);
-					reset();
+					setIsLoading(true);
 					setTimeout(() => {
 						navigate('/');
-					}, 2000);
+						toast.success(
+							`Utilisateur creer avec success: Bienvenue ${data.name.toUpperCase()}!!!!`,
+						);
+						setIsLoading(false);
+					}, 4000);
+					reset();
 				};
 				reader.readAsDataURL(data.avatar[0]);
 			}
@@ -94,7 +99,7 @@ const Register = () => {
 							id='username'
 							autoComplete='on'
 							placeholder='name'
-							className='w-full px-4 py-3 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto '>
 							<motion.span
@@ -117,7 +122,7 @@ const Register = () => {
 							id='email'
 							placeholder='Email'
 							autoComplete='on'
-							className='w-full px-4 py-3 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto'>
 							<motion.span
@@ -140,7 +145,7 @@ const Register = () => {
 							id='avatar'
 							placeholder='avatar'
 							autoComplete='on'
-							className='w-full px-4 py-3 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto '>
 							<motion.span
@@ -163,7 +168,7 @@ const Register = () => {
 							id='password'
 							placeholder='Password'
 							autoComplete='on'
-							className='w-full px-4 py-3 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto '>
 							<motion.span
@@ -177,7 +182,7 @@ const Register = () => {
 						</p>
 					</div>
 					<button className='block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600'>
-						Register
+						{isLoading ? <Spinner color='white' /> : 'Register'}
 					</button>
 				</form>
 				<div className='flex items-center pt-4 space-x-1'>
