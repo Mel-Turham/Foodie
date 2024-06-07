@@ -16,8 +16,10 @@ const MenuItem = ({
 	return (
 		<figure
 			onClick={() => setActiveItem(name)}
-			className={` flex flex-col items-center pb-2 justify-center  ${
-				activeItem === name ? 'border-b-4 border-orange-600 border-solid font-bold' : ''
+			className={` flex flex-col items-center pb-2 justify-center cursor-pointer  ${
+				activeItem === name
+					? 'border-b-4 border-orange-600 border-solid font-bold'
+					: ''
 			}`}
 		>
 			<Image
