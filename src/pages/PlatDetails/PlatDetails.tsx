@@ -2,14 +2,14 @@ import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { IoMdStar, IoMdStarHalf, IoMdSend } from 'react-icons/io';
-
 import { Button } from '@nextui-org/react';
+import useCartStore from '../../store/useCartStore';
 
 type CommentType = {
 	username: string;
 	commentUser: string;
 };
-type platTypes = {
+type PlatType = {
 	id: string;
 	name: string;
 	description: string;
@@ -20,15 +20,13 @@ type platTypes = {
 };
 const PlatDetails = () => {
 	const { id } = useParams();
-
-	const [plat, setPlat] = useState<platTypes | null>(null);
-	// const numId = Number(id);
+	const addToCart = useCartStore((state) => state.addToCart);
+	const [plat, setPlat] = useState<PlatType>();
 	useEffect(() => {
-		const fecthPlat = async (): Promise<platTypes> => {
+		const fecthPlat = async () => {
 			const request = await axios.get(`http://localhost:8000/food_list/${id}`);
 			const response = await request.data;
 			setPlat(response);
-			return response;
 		};
 		fecthPlat();
 	}, [id]);
@@ -44,6 +42,7 @@ const PlatDetails = () => {
 				</div>
 			);
 		});
+
 	return (
 		<main className='bg-gray-100 min-h-[100vh] flex items-center justify-center'>
 			<section className='flex flex-col justify-center h-screen mt-10'>
@@ -76,6 +75,7 @@ const PlatDetails = () => {
 							radius='none'
 							className='w-fit'
 							variant='solid'
+							onClick={() => addToCart(plat ? plat : '')}
 						>
 							Add to cart
 						</Button>
