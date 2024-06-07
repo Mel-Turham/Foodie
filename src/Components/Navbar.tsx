@@ -59,7 +59,7 @@ const Navbar = () => {
 					);
 				})}
 			</nav>
-			<div className='flex items-center justify-center gap-3'>
+			<div className='flex items-center justify-center gap-5'>
 				<div
 					className='relative flex items-center justify-center w-6 h-6 cursor-pointer'
 					onClick={() => setToggle(true)}
@@ -73,14 +73,15 @@ const Navbar = () => {
 				</div>
 
 				{user ? (
-					<div>
-						<Dropdown placement='bottom-end'>
+					<div className='grid place-content-center'>
+						<Dropdown placement='bottom-start'>
 							<DropdownTrigger>
 								<Avatar
 									isBordered
+									isFocusable
 									as='button'
 									className='transition-transform'
-									color='secondary'
+									color='warning'
 									name={user.name}
 									size='sm'
 									src={user.avatar}
@@ -91,13 +92,15 @@ const Navbar = () => {
 									<p className='font-semibold'>{user.name}</p>
 									<p className='font-semibold'>{user.email}</p>
 								</DropdownItem>
-								<DropdownItem key='logout' color='danger'>
+								<DropdownItem key='logout'>
 									<Button
 										variant='solid'
 										color='danger'
 										onClick={() => {
 											logoutUser();
-											toast.success(`Vous vous deconnectez avec success ${user.name}`)
+											toast.success(
+												`Vous vous deconnectez avec success ${user.name}`,
+											);
 										}}
 										size='sm'
 									>
