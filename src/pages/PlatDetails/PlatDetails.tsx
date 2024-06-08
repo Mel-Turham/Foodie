@@ -33,10 +33,9 @@ const PlatDetails = () => {
 
 	const commentsList =
 		plat &&
-		plat?.comments &&
 		plat?.comments.map((item) => {
 			return (
-				<div>
+				<div key={plat.id}>
 					<p>{item.username}</p>
 					<p>{item.commentUser}</p>
 				</div>
@@ -56,7 +55,7 @@ const PlatDetails = () => {
 						/>
 					</figure>
 					<div className='flex flex-col gap-3'>
-						<h2 className='text-3xl font-semibold'>{plat && plat.name}</h2>
+						<h2 className='text-3xl font-semibold'>{plat?.name}</h2>
 						<div className='flex items-center justify-between w-[30%] text-default-500 text-[16.5px]'>
 							<div className='flex text-orange-600'>
 								<IoMdStar className='w-6 h-6' />
@@ -67,7 +66,7 @@ const PlatDetails = () => {
 						</div>
 						<p className='flex items-center gap-4 text-2xl font-semibold uppercase'>
 							<span className='line-through'>2000fcfa</span>
-							<span>{plat && plat.price}fcfa</span>
+							<span>{plat?.price}fcfa</span>
 						</p>
 						<p className='text-[18px]'>{plat && plat.description}</p>
 						<Button
@@ -75,7 +74,7 @@ const PlatDetails = () => {
 							radius='none'
 							className='w-fit'
 							variant='solid'
-							onClick={() => addToCart(plat ? plat : '')}
+							onClick={() => addToCart(plat)}
 						>
 							Add to cart
 						</Button>
