@@ -1,14 +1,12 @@
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { IoMdStar, IoMdStarHalf, IoMdSend } from 'react-icons/io';
+import { IoMdStar, IoMdStarHalf } from 'react-icons/io';
 import { Button } from '@nextui-org/react';
 import useCartStore from '../../store/useCartStore';
+import CommentForm from '../../Components/CommentForm';
+import ProductComments from '../../Components/ProductComments';
 
-type CommentType = {
-	username: string;
-	commentUser: string;
-};
 type PlatType = {
 	id: string;
 	name: string;
@@ -16,10 +14,9 @@ type PlatType = {
 	price: number;
 	category: string;
 	image: string;
-	comments: CommentType[] | undefined;
 };
 const PlatDetails = () => {
-	const { id } = useParams();
+	const { id } = useParams<{ id: string }>();
 	const addToCart = useCartStore((state) => state.addToCart);
 	const [plat, setPlat] = useState<PlatType>();
 	useEffect(() => {
@@ -31,20 +28,9 @@ const PlatDetails = () => {
 		fecthPlat();
 	}, [id]);
 
-	const commentsList =
-		plat &&
-		plat?.comments.map((item) => {
-			return (
-				<div key={plat.id}>
-					<p>{item.username}</p>
-					<p>{item.commentUser}</p>
-				</div>
-			);
-		});
-
 	return (
-		<main className='bg-gray-100 min-h-[100vh] flex items-center justify-center'>
-			<section className='flex flex-col justify-center h-screen mt-10'>
+		<main className=' min-h-[100vh] bg-gray-100 pt-20 flex items-center justify-center'>
+			<section className='flex flex-col justify-center mt-10'>
 				<div className='flex items-start gap-3'>
 					<figure className='w-[300px] h-[250px] overflow-hidden'>
 						<img
@@ -68,7 +54,7 @@ const PlatDetails = () => {
 							<span className='line-through'>2000fcfa</span>
 							<span>{plat?.price}fcfa</span>
 						</p>
-						<p className='text-[18px]'>{plat && plat.description}</p>
+						<p className='text-[18px]'>{plat?.description}</p>
 						<Button
 							color='primary'
 							radius='none'
@@ -80,33 +66,10 @@ const PlatDetails = () => {
 						</Button>
 					</div>
 				</div>
-				<div className='flex gap-4 mt-6'>
-					<form className='w-1/2'>
-						<div className='flex flex-col gap-2 mb-5'>
-							<h3 className='text-3xl font-semibold'>Add a comments🧑‍💻</h3>
-							<textarea
-								name='comments'
-								id='comments'
-								className='h-[90px] w-full resize-none px-4 py-2 border-1.5 border-solid border-slate-500 rounded-sm'
-							></textarea>
-						</div>
-						<Button
-							type='submit'
-							variant='solid'
-							color='primary'
-							radius='none'
-							endContent={<IoMdSend className='w-5 h-5' />}
-						>
-							Send a comment
-						</Button>
-					</form>
-					<div className='w-1/2 '>
-						{plat && plat.comments?.length === 0 ? (
-							<p className='text-2xl'>Auccun commentaire sur cet article</p>
-						) : (
-							commentsList
-						)}
-					</div>
+				{/* comments section */}
+				<div className='flex justify-between w-full mt-6'>
+					<CommentForm productId={parseInt(id, 10)} />
+					<ProductComments productId={parseInt(id, 10)} />
 				</div>
 			</section>
 		</main>
