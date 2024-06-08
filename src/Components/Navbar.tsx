@@ -1,17 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import { FaBagShopping } from 'react-icons/fa6';
 import {
-	Avatar,
 	Button,
 	Dropdown,
 	DropdownItem,
 	DropdownMenu,
 	DropdownTrigger,
+	User,
 } from '@nextui-org/react';
 import { useToggleContext } from '../Context/contextToggle';
 import useCartStore from '../store/useCartStore';
 import useUserStore from '../store/useUserStore';
 import toast from 'react-hot-toast';
+import { LuLogOut } from 'react-icons/lu';
 interface LinksProps {
 	path: string;
 	label: string;
@@ -74,28 +75,36 @@ const Navbar = () => {
 
 				{user ? (
 					<div className='grid place-content-center'>
-						<Dropdown  placement='bottom-start'>
+						<Dropdown
+							placement='bottom-start'
+							size='sm'
+							radius='none'
+							shadow='sm'
+							className='bg-[#f1f1f1]'
+						>
 							<DropdownTrigger>
-								<Avatar
-									isBordered
-									isFocusable
+								<User
 									as='button'
-									className='transition-transform'
-									color='warning'
+									avatarProps={{
+										isBordered: true,
+										src: user.avatar,
+										color: 'warning',
+										size: 'sm',
+									}}
+									className='font-semibold transition-transform'
+									description={user.email}
 									name={user.name}
-									size='sm'
-									src={user.avatar}
 								/>
 							</DropdownTrigger>
 							<DropdownMenu aria-label='Profile Actions' variant='flat'>
-								<DropdownItem key='profile' className='gap-2 h-14'>
-									<p className='font-semibold'>{user.name}</p>
-									<p className='font-semibold'>{user.email}</p>
-								</DropdownItem>
-								<DropdownItem key='logout'>
+								<DropdownItem textValue='logout' key='logout'>
 									<Button
+										className='w-full font-semibold uppercase shadow-sm'
+										
 										variant='solid'
-										color='danger'
+										color='primary'
+										radius='sm'
+										endContent={<LuLogOut className='w-5 h-4' />}
 										onClick={() => {
 											logoutUser();
 											toast.success(
