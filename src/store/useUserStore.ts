@@ -17,13 +17,16 @@ type UserState = {
 	checkUserExists: (email: string) => Promise<boolean>;
 	loginUser: (email: string, password: string) => Promise<void>;
 	logoutUser: () => void;
+	loadUser: () => void;
 };
 
 const useUserStore = create<UserState>((set) => ({
 	user: null,
 	createUser: async (newUser) => {
 		const response = await axios.post('http://localhost:8000/users', newUser);
+		const newUserData = response.data;
 		set({ user: response.data });
+		localStorage.setItem('user', JSON.stringify(newUserData));
 	},
 
 	setUser: (user) => set({ user }),
@@ -42,11 +45,22 @@ const useUserStore = create<UserState>((set) => ({
 		const user = response.data[0];
 		if (user && user.password === password) {
 			set({ user });
+			localStorage.setItem('user', JSON.stringify(user));
 		} else {
 			throw new Error('Email ou mot de passe incorrect');
 		}
 	},
-	logoutUser: () => set({ user: null }),
+	logoutUser: () => {
+		set({ user: null });
+		localStorage.removeItem('user');
+	},
+
+	loadUser: () => {
+		const savedUser = localStorage.getItem('user');
+		if (savedUser) {
+			set({ user: JSON.parse(savedUser) });
+		}
+	},
 }));
 
 export default useUserStore;

@@ -12,10 +12,15 @@ import {
 import { useEffect } from 'react';
 import { useToggleContext } from './Context/contextToggle';
 import useCartStore from './store/useCartStore';
+import useUserStore from './store/useUserStore';
 const App = () => {
 	const loadCart = useCartStore((state) => state.loadCart);
+	const loadUser = useUserStore((state) => state.loadUser);
 
 	const { toggle } = useToggleContext();
+	useEffect(() => {
+		loadUser();
+	}, [loadUser]);
 	useEffect(() => {
 		loadCart();
 	}, [loadCart]);
