@@ -5,11 +5,15 @@ import { useToggleContext } from '../Context/contextToggle';
 import useCartStore from '../store/useCartStore';
 import { motion } from 'framer-motion';
 
+import useUserStore from '../store/useUserStore';
+import { Link } from 'react-router-dom';
+
 const CardLists = () => {
 	const { setToggle } = useToggleContext();
 	const { cart, incrementQuantity, decrementQuantity, removeFromCart } =
 		useCartStore();
 	const total = useCartStore((state) => state.calculateTotal());
+	const user = useUserStore((state) => state.user);
 
 	const cartItem = cart.map((item) => {
 		return (
@@ -105,9 +109,25 @@ const CardLists = () => {
 							<h3 className='mb-3 text-xl font-bold'>
 								Total: <span className='uppercase'>{total} fcfa</span>
 							</h3>
-							<Button radius='none' size='md' variant='solid' color='primary'>
-								Conectez vous!!
-							</Button>
+
+							{user ? (
+								<Button
+									aria-label='paiemaint-button'
+									radius='none'
+									size='md'
+									variant='solid'
+									color='success'
+									className='font-semibold text-white'
+								>
+									Effectuez le paiemant!!
+								</Button>
+							) : (
+								<Button radius='none' size='md' variant='solid' color='primary'>
+									<Link aria-label='login-button' to='/login'>
+										Conectez vous!!
+									</Link>
+								</Button>
+							)}
 						</div>
 						<div className='flex items-center justify-between py-2 font-semibold capitalize border-black border-solid border-b-1 '>
 							<p>image</p>

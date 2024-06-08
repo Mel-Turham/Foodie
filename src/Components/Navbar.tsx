@@ -74,7 +74,7 @@ const Navbar = () => {
 
 				{user ? (
 					<div className='grid place-content-center'>
-						<Dropdown placement='bottom-start'>
+						<Dropdown  placement='bottom-start'>
 							<DropdownTrigger>
 								<Avatar
 									isBordered
