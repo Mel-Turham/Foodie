@@ -72,14 +72,14 @@ const ModalPaiement = ({
 				isDismissable={true}
 				isKeyboardDismissDisabled={false}
 				onOpenChange={onOpenChange}
-				placement='top-center'
+				placement='center'
 				radius='none'
 			>
 				<ModalContent>
 					<ModalHeader className='flex items-center'>
-						<h2 className='text-2xl font-semibold'>Information personne</h2>
+						<h2 className='text-2xl font-semibold'>Informations personnel</h2>
 					</ModalHeader>
-						<Divider/>	
+					<Divider className='w-[90%] mx-auto mb-5' />
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<ModalBody>
 							<div>
@@ -89,11 +89,11 @@ const ModalPaiement = ({
 									type='text'
 									placeholder='Your name...'
 									{...register('name')}
-									variant='underlined'
-									color='primary'
+									color='success'
+									variant='bordered'
 								/>
 							</div>
-							<span className='text-sm text-red-600'>
+							<span className='text-sm font-semibold text-red-600'>
 								{errors && errors?.name?.message}
 							</span>
 							<div>
@@ -103,10 +103,10 @@ const ModalPaiement = ({
 									placeholder='Votre numero...'
 									{...register('numero')}
 									autoFocus
-									variant='underlined'
-									color='primary'
+									variant='bordered'
+									color='success'
 								/>
-								<span className='text-sm text-red-400'>
+								<span className='text-sm font-semibold text-red-600'>
 									{errors && errors?.numero?.message}
 								</span>
 							</div>
@@ -116,14 +116,20 @@ const ModalPaiement = ({
 									type='text'
 									placeholder='Votre address...'
 									{...register('address')}
-									variant='underlined'
-									color='primary'
+									variant='bordered'
+									color='success'
 								/>
-								<span className='text-red-600 tex-sm'>
+								<span className='text-sm font-semibold text-red-600'>
 									{errors && errors?.address?.message}
 								</span>
 							</div>
-							<Button type='submit' radius='none' color='primary'>
+							<Button
+								type='submit'
+								radius='none'
+								className='font-semibold text-medium'
+								color='success'
+								size='md'
+							>
 								Payer
 							</Button>
 						</ModalBody>
