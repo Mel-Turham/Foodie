@@ -7,6 +7,8 @@ import axios from 'axios';
 import CardLists from '../../Components/CardLists';
 import { useToggleContext } from '../../Context/contextToggle';
 import useCartStore from '../../store/useCartStore';
+import { useDisclosure } from '@nextui-org/react';
+import ModalPaiement from '../../Components/ModalPaiement';
 
 type PlatTypes = {
 	name: string;
@@ -21,6 +23,7 @@ const Home = () => {
 	const { toggle } = useToggleContext();
 	const [plats, setPlats] = useState<PlatTypes[]>([]);
 	const addToCart = useCartStore((state) => state.addToCart);
+	const { isOpen, onClose, onOpenChange, onOpen } = useDisclosure();
 
 	useEffect(() => {
 		const FetchPlats = async () => {
@@ -34,7 +37,12 @@ const Home = () => {
 
 	return (
 		<>
-			{toggle && <CardLists />}
+			<ModalPaiement
+				onClose={onClose}
+				onOpenChange={onOpenChange}
+				isOpen={isOpen}
+			/>
+			{toggle && <CardLists onOpen={onOpen} isOpen={isOpen} />}
 			<main className='w-full pb-5 bg-gray-100'>
 				<section className='relative flex w-full text-white bg-center bg-cover min-h-[80vh] lg:pb-20 sm:items-center sm:pb-0 lg:items-end texpxt-white md:px-8 lg:px-10 hero sm:px-2'>
 					<div className='container z-10 '>

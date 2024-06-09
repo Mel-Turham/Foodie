@@ -8,7 +8,12 @@ import { motion } from 'framer-motion';
 import useUserStore from '../store/useUserStore';
 import { Link } from 'react-router-dom';
 
-const CardLists = () => {
+type CardListsProps = {
+	onOpen: () => void;
+	isOpen: boolean;
+};
+
+const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 	const { setToggle } = useToggleContext();
 	const { cart, incrementQuantity, decrementQuantity, removeFromCart } =
 		useCartStore();
@@ -71,19 +76,20 @@ const CardLists = () => {
 		<motion.section
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			transition={{ duration: 0.5 }}
-			className='fixed z-40 w-full h-screen bg-black/35 backdrop-blur-sm'
+			transition={{ duration: 0.2 }}
+			className={`fixed z-40 w-full h-screen ${
+				isOpen ? '' : 'bg-black/35 backdrop-blur-sm'
+			} `}
 		>
 			<motion.div
 				initial={{ x: '-300%', opacity: 0 }}
 				animate={{ x: 0, opacity: 1 }}
 				exit={{ x: '-300%', opacity: 0 }}
 				transition={{
-					duration: 0.6,
-					type: 'spring',
-					ease: 'easeInOut',
+					duration: 0.3,
+					mass: 0.3,
 				}}
-				className='w-[35%] h-screen bg-white p-5 overflow-y-scroll'
+				className='w-[35%] h-screen bg-white p-5 no-scroll-bar overflow-y-scroll'
 			>
 				<div className='flex items-start justify-between'>
 					<h2 className='text-2xl font-semibold uppercase'>Foodie</h2>
@@ -118,6 +124,7 @@ const CardLists = () => {
 									variant='solid'
 									color='success'
 									className='font-semibold text-white'
+									onPress={onOpen}
 								>
 									Effectuez le paiemant!!
 								</Button>

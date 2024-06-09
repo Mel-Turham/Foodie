@@ -14,7 +14,7 @@ const CommentSchema = z.object({
 type CommentFormValues = z.infer<typeof CommentSchema>;
 
 type CommentFormProps = {
-	productId: number;
+	productId: number | undefined;
 };
 
 const CommentForm = ({ productId }: CommentFormProps) => {

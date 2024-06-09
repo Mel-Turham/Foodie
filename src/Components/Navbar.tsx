@@ -42,8 +42,8 @@ const Navbar = () => {
 
 	return (
 		<header className='fixed top-0 left-0 z-20 flex items-center justify-between w-full px-8 py-4 bg-white shadow-md'>
-			<h1 className='font-bold text-[1.7rem] '>Foodie</h1>
-			<nav className='flex items-center justify-center gap-3 '>
+			<h1 className='font-bold text-[1.7rem] w-fit'>Foodie</h1>
+			<nav className='flex items-center justify-center gap-8 text-[16px] w-1/2'>
 				{Links.map((link) => {
 					return (
 						<NavLink
@@ -60,7 +60,7 @@ const Navbar = () => {
 					);
 				})}
 			</nav>
-			<div className='flex items-center justify-center gap-5'>
+			<div className='flex items-center justify-center gap-5 '>
 				<div
 					className='relative flex items-center justify-center w-6 h-6 cursor-pointer'
 					onClick={() => setToggle(true)}
@@ -74,7 +74,7 @@ const Navbar = () => {
 				</div>
 
 				{user ? (
-					<div className='grid place-content-center'>
+					<div className='flex items-center justify-center'>
 						<Dropdown
 							placement='bottom-start'
 							size='sm'
@@ -100,7 +100,6 @@ const Navbar = () => {
 								<DropdownItem textValue='logout' key='logout'>
 									<Button
 										className='w-full font-semibold uppercase shadow-sm'
-										
 										variant='solid'
 										color='primary'
 										radius='sm'
