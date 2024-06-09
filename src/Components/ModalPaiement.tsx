@@ -1,5 +1,6 @@
 import {
 	Button,
+	Divider,
 	Input,
 	Modal,
 	ModalBody,
@@ -78,6 +79,7 @@ const ModalPaiement = ({
 					<ModalHeader className='flex items-center'>
 						<h2 className='text-2xl font-semibold'>Information personne</h2>
 					</ModalHeader>
+						<Divider/>	
 					<form onSubmit={handleSubmit(onSubmit)}>
 						<ModalBody>
 							<div>
@@ -87,6 +89,8 @@ const ModalPaiement = ({
 									type='text'
 									placeholder='Your name...'
 									{...register('name')}
+									variant='underlined'
+									color='primary'
 								/>
 							</div>
 							<span className='text-sm text-red-600'>
@@ -98,6 +102,9 @@ const ModalPaiement = ({
 									type='text'
 									placeholder='Votre numero...'
 									{...register('numero')}
+									autoFocus
+									variant='underlined'
+									color='primary'
 								/>
 								<span className='text-sm text-red-400'>
 									{errors && errors?.numero?.message}
@@ -109,6 +116,8 @@ const ModalPaiement = ({
 									type='text'
 									placeholder='Votre address...'
 									{...register('address')}
+									variant='underlined'
+									color='primary'
 								/>
 								<span className='text-red-600 tex-sm'>
 									{errors && errors?.address?.message}
