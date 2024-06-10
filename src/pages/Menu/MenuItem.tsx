@@ -1,4 +1,6 @@
+/* eslint-disable react-refresh/only-export-components */
 import { Image } from '@nextui-org/react';
+import { memo } from 'react';
 
 type MenuItemProps = {
 	name: string;
@@ -35,4 +37,5 @@ const MenuItem = ({
 	);
 };
 
-export default MenuItem;
+// eslint-disable-next-line react-refresh/only-export-components
+export default memo(MenuItem);
