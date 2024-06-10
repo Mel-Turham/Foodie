@@ -6,6 +6,7 @@ import {
 	ModalBody,
 	ModalContent,
 	ModalHeader,
+	Spinner,
 } from '@nextui-org/react';
 
 import * as z from 'zod';
@@ -15,12 +16,18 @@ import useUserStore from '../store/useUserStore';
 import useCartStore from '../store/useCartStore';
 import { useToggleContext } from '../Context/contextToggle';
 import toast from 'react-hot-toast';
+import emailjs from '@emailjs/browser';
+import { useState } from 'react';
 
 type ModalPaiementProps = {
 	onClose: () => void;
 	isOpen: boolean;
 	onOpenChange: (isOpen: boolean) => void;
 };
+
+// service_fblsnzn
+// template_c27q3l6
+// template_c27q3l6
 
 const ModalPaiementSchema = z.object({
 	name: z
@@ -45,6 +52,7 @@ const ModalPaiement = ({
 	const user = useUserStore((state) => state.user);
 	const clearCart = useCartStore((state) => state.clearCart);
 	const { setToggle } = useToggleContext();
+	const [isLoading, setIsloading] = useState(false);
 
 	const {
 		register,
@@ -56,12 +64,36 @@ const ModalPaiement = ({
 	});
 
 	const onSubmit = (data: IModalPaiement) => {
-		console.log(data);
-		clearCart();
-		onClose();
-		reset();
-		toast.success('Commande a ete envoyer avec success! ✨');
-		setToggle(false);
+		setIsloading(true);
+		const templateParams = {
+			name: data.name,
+			numero: data.numero,
+			address: data.address,
+		};
+
+		emailjs
+			.send(
+				'service_fblsnzn',
+				'template_dscmcsh',
+				templateParams,
+				'ozNhRLh8J0MqEe7n1',
+			)
+			.then(
+				(response) => {
+					console.log('SUCCESS', response.status, response.text);
+					setIsloading(false);
+					toast.success('Your commends has been send Successfully');
+					reset();
+					clearCart();
+					setToggle(false);
+					onClose();
+				},
+				(error) => {
+					console.log('FAILED', error);
+					setIsloading(false);
+					toast.error('Error! Try again please or verifie you network!!');
+				},
+			);
 	};
 	return (
 		<section className=''>
@@ -130,7 +162,7 @@ const ModalPaiement = ({
 								color='success'
 								size='md'
 							>
-								Payer
+								{isLoading ? <Spinner color='white' size='sm' /> : 'Payer'}
 							</Button>
 						</ModalBody>
 					</form>
