@@ -31,7 +31,7 @@ const Cart = ({
 	addToCart,
 }: CardProps) => {
 	return (
-		<Card className='p-2 pb-4' radius='none' shadow='none'>
+		<Card className='p-2 pb-4 w-[295px]' radius='none' shadow='none'>
 			<figure className='w-full overflow-hidden h-[200px] '>
 				<Image
 					isZoomed
