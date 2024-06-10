@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import ComponentItem from './MenuItem';
-import { Button } from '@nextui-org/react';
+import { Button, Input } from '@nextui-org/react';
 import Cart from '../../Components/Cart';
 import useCartStore from '../../store/useCartStore';
+import { BiSearch } from 'react-icons/bi';
 
 type MenuListTypes = {
 	menu_name: string;
@@ -23,11 +24,9 @@ type FoodListType = {
 const Menu = () => {
 	const [menuList, setMenuList] = useState<MenuListTypes[]>([]);
 	const [activeItem, setActiveItem] = useState<string | null>(null);
+	const [searhItem, setSearchItem] = useState<string | undefined>('');
 	const [foodList, setFoodList] = useState<FoodListType[]>([]);
 	const addToCart = useCartStore((state) => state.addToCart);
-  
-
-  
 
 	useEffect(() => {
 		const FetchListMenu = async () => {
@@ -47,16 +46,27 @@ const Menu = () => {
 		fetchFood();
 	}, []);
 
-	const handleActiveItem = (name: string) => {
-		setActiveItem(name);
-	};
+	// const handleActiveItem = (name: string) => {
+	// 	setActiveItem(name);
+	// };
 
-	const filteredFoodList = activeItem
-		? foodList.filter((food) => food.category === activeItem)
-		: foodList;
+	const handleActiveItem = useCallback((name: string) => {
+		setActiveItem(name);
+	}, []);
+
+	const filteredFoodList =
+		activeItem && foodList.filter((food) => food.category === activeItem);
+	const filteredFoodListSearch =
+		searhItem &&
+		foodList.filter((food) =>
+			food.name?.toLowerCase().includes(searhItem.toLowerCase()),
+		);
+
+	const filtered = filteredFoodListSearch || filteredFoodList || foodList;
+
 	return (
 		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100'>
-			<section className='flex flex-col justify-end min-h-[70vh] px-24 py-5'>
+			<section className='flex  flex-col justify-end min-h-[70vh] lg:px-24 py-5'>
 				<div>
 					<h1 className='text-4xl font-semibold'>Explore our menu</h1>
 					<p className='w-[700px] mt-4 text-pretty'>
@@ -83,20 +93,34 @@ const Menu = () => {
 						})}
 					</div>
 				</div>
-				<Button
-					className='w-fit'
-					color='primary'
-					variant='shadow'
-					size='sm'
-					onClick={() => setActiveItem(null)}
-				>
-					All menu
-				</Button>
+				<div className='flex items-center justify-between'>
+					<Button
+						className='w-fit'
+						color='primary'
+						variant='shadow'
+						size='sm'
+						onClick={() => setActiveItem(null)}
+					>
+						All menu
+					</Button>
+
+					<Input
+						startContent={<BiSearch className='w-5 h-5 text-slate-500' />}
+						autoFocus
+						variant='bordered'
+						color='primary'
+						placeholder='search by name...'
+						size='sm'
+						className='w-[250px]'
+						value={searhItem}
+						onChange={(e) => setSearchItem(e.target.value)}
+					/>
+				</div>
 			</section>
 			<section className='px-8 mt-5'>
-				<div className='grid gap-4 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4'>
-					{filteredFoodList.map((plat) => {
-						return (
+				<div className='flex flex-wrap items-center justify-center'>
+					{filtered.length > 0 ? (
+						filtered.map((plat) => (
 							<Cart
 								key={plat.id}
 								id={plat.id}
@@ -107,8 +131,12 @@ const Menu = () => {
 								image={plat.image}
 								addToCart={addToCart}
 							/>
-						);
-					})}
+						))
+					) : (
+						<h3 className='text-3xl font-semibold text-center uppercase'>
+							Item not found
+						</h3>
+					)}
 				</div>
 			</section>
 		</main>
