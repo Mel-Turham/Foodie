@@ -66,10 +66,10 @@ const Menu = () => {
 
 	return (
 		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100'>
-			<section className='flex  flex-col justify-end min-h-[70vh] lg:px-24 py-5'>
-				<div>
+			<section className='flex flex-col lg:justify-end lg:min-h-[70vh] lg:px-10 py-5 max-md:px-5'>
+				<div className='max:md-px-5'>
 					<h1 className='text-4xl font-semibold'>Explore our menu</h1>
-					<p className='w-[700px] mt-4 text-pretty'>
+					<p className='lg:w-[700px] mt-4 text-pretty'>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
 						esse, minus, necessitatibus ratione reprehenderit nisi minima ullam
 						deleniti, facilis expedita tempore ea quo quos. Incidunt dolorem, ea
@@ -78,7 +78,7 @@ const Menu = () => {
 					</p>
 				</div>
 				<div className='flex flex-col gap-2'>
-					<div className='flex items-center justify-between py-5'>
+					<div className='flex items-center justify-between py-5 max-md:hidden'>
 						{menuList.map((itemList) => {
 							const { id, menu_image, menu_name } = itemList;
 							return (
@@ -93,7 +93,7 @@ const Menu = () => {
 						})}
 					</div>
 				</div>
-				<div className='flex items-center justify-between'>
+				<div className='flex items-center justify-between max-md:mt-5 max-sm:gap-2 focus:outline-none'>
 					<Button
 						className='w-fit'
 						color='primary'
@@ -110,15 +110,15 @@ const Menu = () => {
 						variant='bordered'
 						color='primary'
 						placeholder='search by name...'
-						size='sm'
-						className='w-[250px]'
+						size='md'
+						className='w-[300px]'
 						value={searhItem}
 						onChange={(e) => setSearchItem(e.target.value)}
 					/>
 				</div>
 			</section>
-			<section className='px-8 mt-5'>
-				<div className='flex flex-wrap items-center justify-center'>
+			<section className=' max-md:px-2'>
+				<div className='flex flex-wrap items-center justify-center gap-2'>
 					{filtered.length > 0 ? (
 						filtered.map((plat) => (
 							<Cart

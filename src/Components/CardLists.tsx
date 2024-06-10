@@ -89,7 +89,7 @@ const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 					duration: 0.3,
 					mass: 0.3,
 				}}
-				className='w-[35%] h-screen bg-white p-5 no-scroll-bar overflow-y-scroll'
+				className='max-sm:w-full lg:w-[35%] h-screen bg-white p-5 no-scroll-bar overflow-y-scroll'
 			>
 				<div className='flex items-start justify-between'>
 					<h2 className='text-2xl font-semibold uppercase'>Foodie</h2>

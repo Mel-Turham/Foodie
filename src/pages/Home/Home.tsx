@@ -44,12 +44,12 @@ const Home = () => {
 			/>
 			{toggle && <CardLists onOpen={onOpen} isOpen={isOpen} />}
 			<main className='w-full pb-5 bg-gray-100'>
-				<section className='relative flex w-full text-white bg-center bg-cover min-h-[80vh] lg:pb-20 sm:items-center sm:pb-0 lg:items-end texpxt-white md:px-8 lg:px-10 hero sm:px-2'>
-					<div className='container z-10 '>
-						<h2 className='font-semibold text-gray-100 text-7xl'>
+				<section className='relative flex w-full bg-center bg-cover min-h-[80vh] lg:pb-20 max-sm:items-center sm:pb-0 lg:items-end text-white md:px-8 lg:px-10 hero max-sm:px-2'>
+					<div className='z-10'>
+						<h2 className='font-semibold text-gray-100 lg:text-7xl max-md:text-[2rem]'>
 							Commande ta nourriture <br /> favorite ici!
 						</h2>
-						<p className='w-[600px] my-6 text-pretty'>
+						<p className='lg:w-[600px] lg:my-6 max-md:my-2 text-pretty'>
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
 							repellendus sequi optio praesentium voluptatem facilis deleniti
 							laboriosam? Modi, veniam laudantium distinctio, esse aliquam quae
@@ -62,13 +62,12 @@ const Home = () => {
 						</Link>
 					</div>
 				</section>
-				<section className='my-8 sm:px-5 lg:px-10'>
-					<h3 className='text-3xl font-bold'>
-						<span className='text-orange-600'>Meilleur </span> repas pres de
+				<section className='my-8 max-md:px-2'>
+					<h3 className='pl-4 mb-4 text-3xl font-bold max-md:w-auto lg:w-fit'>
+						<span className='text-orange-600'>Meilleurs </span> repas pres de
 						chez vous!!
 					</h3>
-
-					<div className='grid gap-4 mt-6 md:grid-cols-2 sm:grid-cols-1 lg:grid-cols-4'>
+					<div className='flex flex-wrap items-center justify-center gap-2'>
 						{plats.map((plat) => {
 							return (
 								<Cart
