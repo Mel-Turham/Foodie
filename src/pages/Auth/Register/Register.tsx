@@ -53,6 +53,7 @@ const Register = () => {
 		formState: { errors },
 	} = useForm<IRegisterForm>({
 		resolver: zodResolver(RegisterSchema),
+		mode: 'all',
 	});
 
 	const onSubmit = async (data: IRegisterForm) => {
