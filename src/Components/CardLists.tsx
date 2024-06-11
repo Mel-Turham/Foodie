@@ -15,10 +15,19 @@ type CardListsProps = {
 
 const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 	const { setToggle } = useToggleContext();
-	const { cart, incrementQuantity, decrementQuantity, removeFromCart } =
-		useCartStore();
+	const {
+		cart,
+		incrementQuantity,
+		decrementQuantity,
+		removeFromCart,
+		clearCart,
+	} = useCartStore();
 	const total = useCartStore((state) => state.calculateTotal());
 	const user = useUserStore((state) => state.user);
+
+	const handleClearCart = () => {
+		clearCart();
+	};
 
 	const cartItem = cart.map((item) => {
 		return (
@@ -89,7 +98,7 @@ const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 					duration: 0.3,
 					mass: 0.3,
 				}}
-				className='max-sm:w-full lg:w-[35%] h-screen bg-white p-5 no-scroll-bar overflow-y-scroll'
+				className='max-sm:w-full lg:w-[35%] h-screen bg-white p-5 no-scroll-bar overflow-y-scroll dark:bg-slate-800 dark:text-gray-100'
 			>
 				<div className='flex items-start justify-between'>
 					<h2 className='text-2xl font-semibold uppercase'>Foodie</h2>
@@ -143,8 +152,12 @@ const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 							<p>Qte</p>
 							<p>Remove</p>
 						</div>
-
-						<div className='flex flex-col h-[550px] gap-4 mt-4'>{cartItem}</div>
+						<div className='flex flex-col gap-4 my-4'>{cartItem}</div>
+						<div>
+							<Button radius='none' color='danger' onPress={handleClearCart}>
+								Vider le panier
+							</Button>
+						</div>
 					</>
 				)}
 			</motion.div>

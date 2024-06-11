@@ -29,10 +29,10 @@ const PlatDetails = () => {
 	}, [id]);
 
 	return (
-		<main className=' min-h-[100vh] bg-gray-100 pt-20 flex items-center justify-center'>
-			<section className='flex flex-col justify-center mt-10'>
-				<div className='flex items-start gap-3'>
-					<figure className='w-[300px] h-[250px] overflow-hidden'>
+		<main className=' min-h-[100vh] bg-gray-100 pt-10  flex items-center justify-center  dark:bg-slate-800 dark:text-gray-100'>
+			<section className='flex flex-col justify-center w-full mt-10'>
+				<div className='flex justify-center gap-3'>
+					<figure className='w-[520px] h-[250px] overflow-hidden'>
 						<img
 							src={plat?.image}
 							alt={plat?.name}
@@ -40,9 +40,9 @@ const PlatDetails = () => {
 							className='object-cover w-full h-full'
 						/>
 					</figure>
-					<div className='flex flex-col gap-3'>
+					<div className='flex flex-col gap-3 ml-5'>
 						<h2 className='text-3xl font-semibold'>{plat?.name}</h2>
-						<div className='flex items-center justify-between w-[30%] text-default-500 text-[16.5px]'>
+						<div className='flex items-center justify-between w-[25%] text-default-500 text-[16.5px]'>
 							<div className='flex text-orange-600'>
 								<IoMdStar className='w-6 h-6' />
 								<IoMdStar className='w-6 h-6' />
@@ -67,7 +67,7 @@ const PlatDetails = () => {
 					</div>
 				</div>
 				{/* comments section */}
-				<div className='flex justify-between w-full mt-6'>
+				<div className='flex justify-between w-full px-20 my-4'>
 					<CommentForm productId={parseInt(id, 10)} />
 					<ProductComments productId={parseInt(id, 10)} />
 				</div>

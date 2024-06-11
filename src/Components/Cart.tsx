@@ -31,7 +31,7 @@ const Cart = ({
 	addToCart,
 }: CardProps) => {
 	return (
-		<Card className='p-2 pb-4 rounded-sm max-md:w-[100%] lg:m-0 w-[300px]'  radius='none' shadow='none'>
+		<Card className='p-2 pb-4 rounded-sm max-md:w-[100%] lg:m-0 w-[300px] dark:bg-gray-900 dark:text-gray-200'  radius='none' shadow='none'>
 			<figure className='w-full overflow-hidden h-[200px] '>
 				<Image
 					isZoomed
@@ -44,7 +44,7 @@ const Cart = ({
 					className='object-cover object-center w-full'
 				/>
 			</figure>
-			<CardBody className='pb-0'>
+			<CardBody className='px-0 pb-0'>
 				<div className='flex items-center justify-between'>
 					<h4 className='text-[14px] font-semibold'>{name}</h4>
 					<div className='flex items-center text-orange-600'>
@@ -55,9 +55,9 @@ const Cart = ({
 				</div>
 				<p className='mt-2 text-sm text-pretty'>{description}</p>
 			</CardBody>
-			<CardFooter className='flex justify-between'>
+			<CardFooter className='flex justify-between px-0'>
 				<span className='text-orange-600'>{price} FCFA</span>
-				<span className='font-bold text-default-500'>{category}</span>
+				<span className='font-bold text-default-500 dark:text-gray-200'>{category}</span>
 			</CardFooter>
 			<div className='flex items-center justify-between '>
 				<Button

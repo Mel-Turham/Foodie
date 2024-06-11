@@ -57,14 +57,14 @@ const CommentForm = ({ productId }: CommentFormProps) => {
 		}
 	};
 	return (
-		<form className='w-[35%]' onSubmit={handleSubmit(onSubmit)}>
+		<form className='w-[522px] ml-3' onSubmit={handleSubmit(onSubmit)}>
 			<div className='flex flex-col justify-center gap-2'>
-				<h3 className='text-3xl font-semibold'>Add a comments🧑‍💻</h3>
+				<h3 className='text-2xl font-bold '>Add a comments🧑‍💻</h3>
 				<textarea
 					{...register('comment')}
 					id='comment'
 					name='comment'
-					className='h-[119px] w-full resize-none px-4 py-2 border-1.5 border-solid border-slate-500 rounded-sm'
+					className='h-[119px] w-full resize-none px-4 py-2 border-1.5 border-solid border-slate-600 rounded-sm dark:bg-slate-900'
 				></textarea>
 				{errors?.comment?.message}
 			</div>

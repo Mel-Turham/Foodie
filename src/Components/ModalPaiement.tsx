@@ -100,16 +100,17 @@ const ModalPaiement = ({
 			<Modal
 				onClose={onClose}
 				isOpen={isOpen}
-				size='lg'
+				size='md'
 				isDismissable={true}
 				isKeyboardDismissDisabled={false}
 				onOpenChange={onOpenChange}
 				placement='center'
 				radius='none'
+				className='dark:bg-slate-900 dark:text-gray-100'
 			>
 				<ModalContent>
 					<ModalHeader className='flex items-center'>
-						<h2 className='text-2xl font-semibold'>Informations personnel</h2>
+						<h2 className='text-2xl font-semibold '>Informations personnel</h2>
 					</ModalHeader>
 					<Divider className='w-[90%] mx-auto mb-5' />
 					<form onSubmit={handleSubmit(onSubmit)}>
@@ -117,11 +118,11 @@ const ModalPaiement = ({
 							<div>
 								<Input
 									defaultValue={user?.name}
-									radius='none'
+									radius='sm'
 									type='text'
 									placeholder='Your name...'
 									{...register('name')}
-									color='success'
+									color='primary'
 									variant='bordered'
 								/>
 							</div>
@@ -130,13 +131,13 @@ const ModalPaiement = ({
 							</span>
 							<div>
 								<Input
-									radius='none'
+									radius='sm'
 									type='text'
 									placeholder='Votre numero...'
 									{...register('numero')}
 									autoFocus
 									variant='bordered'
-									color='success'
+									color='primary'
 								/>
 								<span className='text-sm font-semibold text-red-600'>
 									{errors && errors?.numero?.message}
@@ -144,12 +145,12 @@ const ModalPaiement = ({
 							</div>
 							<div>
 								<Input
-									radius='none'
+									radius='sm'
 									type='text'
 									placeholder='Votre address...'
 									{...register('address')}
 									variant='bordered'
-									color='success'
+									color='primary'
 								/>
 								<span className='text-sm font-semibold text-red-600'>
 									{errors && errors?.address?.message}
@@ -157,10 +158,11 @@ const ModalPaiement = ({
 							</div>
 							<Button
 								type='submit'
-								radius='none'
+								radius='sm'
 								className='font-semibold text-medium'
-								color='success'
+								color='primary'
 								size='md'
+								
 							>
 								{isLoading ? <Spinner color='white' size='sm' /> : 'Payer'}
 							</Button>

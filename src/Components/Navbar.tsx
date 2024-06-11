@@ -1,4 +1,10 @@
-import { Link, NavLink } from 'react-router-dom';
+import {
+	Link,
+	NavLink,
+	useNavigate,
+	useLocation,
+	useParams,
+} from 'react-router-dom';
 import { FaBagShopping } from 'react-icons/fa6';
 import {
 	Button,
@@ -23,6 +29,10 @@ const Navbar = () => {
 	const { setToggle } = useToggleContext();
 	const cart = useCartStore((state) => state.cart);
 
+	const navigate = useNavigate();
+	const { pathname } = useLocation();
+	const { id } = useParams<{ id: string }>();
+
 	const logoutUser = useUserStore((state) => state.logoutUser);
 	const Links: LinksProps[] = [
 		{
@@ -41,7 +51,7 @@ const Navbar = () => {
 	];
 
 	return (
-		<header className='fixed top-0 left-0 z-20 flex items-center justify-between w-full px-8 py-4 bg-white shadow-md'>
+		<header className='fixed top-0 left-0 z-20 flex items-center justify-between w-full px-8 py-4 bg-white shadow-md dark:bg-gray-900 dark:text-white'>
 			<h1 className='font-bold text-[1.7rem] w-fit'>Foodie</h1>
 			<nav className='flex items-center justify-center gap-8 text-[16px] w-1/2'>
 				{Links.map((link) => {
@@ -49,8 +59,8 @@ const Navbar = () => {
 						<NavLink
 							className={({ isActive }) =>
 								isActive
-									? ' border-b-3 border-solid border-orange-600 font-semibold text-black'
-									: 'text-default-500'
+									? ' border-b-3 border-solid border-orange-600 font-semibold text-black dark:text-white'
+									: 'text-default-500 dark:text-white/50'
 							}
 							key={link.label}
 							to={link.path}
@@ -63,7 +73,12 @@ const Navbar = () => {
 			<div className='flex items-center justify-center gap-5 '>
 				<div
 					className='relative flex items-center justify-center w-6 h-6 cursor-pointer'
-					onClick={() => setToggle(true)}
+					onClick={() => {
+						setToggle(true);
+						if (pathname === '/menu' || `/plat/${id}`) {
+							navigate('/');
+						} 
+					}}
 				>
 					<i className='grid w-full h-full place-content-center'>
 						<FaBagShopping className='w-6 h-6' />
@@ -80,7 +95,7 @@ const Navbar = () => {
 							size='sm'
 							radius='none'
 							shadow='sm'
-							className='bg-[#f1f1f1]'
+							className='bg-[#f1f1f1] dark:bg-slate-900 focus:outline-none'
 						>
 							<DropdownTrigger>
 								<User
@@ -91,12 +106,12 @@ const Navbar = () => {
 										color: 'warning',
 										size: 'sm',
 									}}
-									className='font-semibold transition-transform'
+									className='font-semibold transition-transform focus:outline-none'
 									description={user.email}
 									name={user.name}
 								/>
 							</DropdownTrigger>
-							<DropdownMenu aria-label='Profile Actions' variant='flat'>
+							<DropdownMenu aria-label='Profile Actions' variant='solid'>
 								<DropdownItem textValue='logout' key='logout'>
 									<Button
 										className='w-full font-semibold uppercase shadow-sm'

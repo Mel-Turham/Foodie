@@ -86,12 +86,15 @@ const Register = () => {
 		}
 	};
 	return (
-		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300'>
-			<div className='w-full max-w-md p-8 space-y-3 bg-white rounded-xl dark:text-gray-800'>
-				<h1 className='text-2xl font-bold text-center'>Register</h1>
+		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300 dark:bg-gradient-to-tr dark:from-slate-900 dark:to-slate-700'>
+			<div className='w-full max-w-md p-8 space-y-3 bg-white rounded-xl dark:bg-slate-900 dark:text-gray-100'>
+				<h1 className='text-2xl font-bold'>Register</h1>
 				<form className='space-y-2' onSubmit={handleSubmit(onSubmit)}>
 					<div className='space-y-1 text-sm'>
-						<label htmlFor='username' className='block dark:text-gray-600'>
+						<label
+							htmlFor='username'
+							className='block font-semibold text-medium'
+						>
 							Username
 						</label>
 						<input
@@ -100,7 +103,7 @@ const Register = () => {
 							id='username'
 							autoComplete='on'
 							placeholder='name'
-							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md dark:bg-slate-900 dark:border-gray-200 focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto '>
 							<motion.span
@@ -114,7 +117,7 @@ const Register = () => {
 						</p>
 					</div>
 					<div className='space-y-1 text-sm'>
-						<label htmlFor='email' className='block dark:text-gray-600'>
+						<label htmlFor='email' className='block font-semibold text-medium'>
 							Email
 						</label>
 						<input
@@ -123,7 +126,7 @@ const Register = () => {
 							id='email'
 							placeholder='Email'
 							autoComplete='on'
-							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md dark:bg-slate-900 dark:border-gray-200 focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto'>
 							<motion.span
@@ -137,7 +140,7 @@ const Register = () => {
 						</p>
 					</div>
 					<div className='space-y-1 text-sm'>
-						<label htmlFor='avatar' className='block dark:text-gray-600'>
+						<label htmlFor='avatar' className='block font-semibold text-medium'>
 							Avatar
 						</label>
 						<input
@@ -146,7 +149,7 @@ const Register = () => {
 							id='avatar'
 							placeholder='avatar'
 							autoComplete='on'
-							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md dark:bg-slate-900 dark:border-gray-200 focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto '>
 							<motion.span
@@ -160,7 +163,10 @@ const Register = () => {
 						</p>
 					</div>
 					<div className='space-y-1 text-sm'>
-						<label htmlFor='password' className='block dark:text-gray-600'>
+						<label
+							htmlFor='password'
+							className='block font-semibold text-medium'
+						>
 							Password
 						</label>
 						<input
@@ -169,7 +175,7 @@ const Register = () => {
 							id='password'
 							placeholder='Password'
 							autoComplete='on'
-							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600'
+							className='w-full px-4 py-2 border-2 border-gray-900 border-solid rounded-md dark:bg-slate-900 dark:border-gray-200 focus:dark:border-violet-600'
 						/>
 						<p className='overflow-auto '>
 							<motion.span
@@ -182,16 +188,16 @@ const Register = () => {
 							</motion.span>
 						</p>
 					</div>
-					<button className='block w-full p-3 text-center rounded-sm dark:text-gray-50 dark:bg-violet-600'>
+					<button className='block w-full p-2 text-center rounded-sm text-gray-50 bg-violet-600'>
 						{isLoading ? <Spinner color='white' /> : 'Register'}
 					</button>
 				</form>
-				<div className='flex items-center pt-4 space-x-1'>
-					<div className='flex-1 h-px sm:w-16 dark:bg-gray-300'></div>
-					<p className='px-3 text-sm dark:text-gray-600'>
+				<div className='flex items-center pt-2.5 space-x-1'>
+					<div className='flex-1 h-px bg-gray-400 sm:w-16 dark:bg-gray-100'></div>
+					<p className='px-3 text-sm dark:text-gray-100'>
 						Register with social accounts
 					</p>
-					<div className='flex-1 h-px sm:w-16 dark:bg-gray-300'></div>
+					<div className='flex-1 h-px bg-gray-400 sm:w-16 dark:bg-gray-300'></div>
 				</div>
 				<div className='flex justify-center space-x-4'>
 					<button aria-label='Log in with Google' className='p-3 rounded-sm'>
@@ -222,12 +228,12 @@ const Register = () => {
 						</svg>
 					</button>
 				</div>
-				<p className='text-xs text-center sm:px-6 dark:text-gray-600'>
+				<p className='text-center sm:px-6 dark:text-gray-200 text-medium'>
 					Already have an account ?
 					<Link
 						rel='noopener noreferrer'
 						to='/login'
-						className='underline dark:text-gray-800'
+						className='ml-3 underline dark:text-gray-300'
 					>
 						Login
 					</Link>

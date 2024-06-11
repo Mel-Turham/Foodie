@@ -65,7 +65,7 @@ const Menu = () => {
 	const filtered = filteredFoodListSearch || filteredFoodList || foodList;
 
 	return (
-		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100'>
+		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100 dark:bg-slate-800 dark:text-gray-100'>
 			<section className='flex flex-col lg:justify-end lg:min-h-[70vh] lg:px-10 py-5 max-md:px-5'>
 				<div className='max:md-px-5'>
 					<h1 className='text-4xl font-semibold'>Explore our menu</h1>
@@ -94,24 +94,28 @@ const Menu = () => {
 					</div>
 				</div>
 				<div className='flex items-center justify-between max-md:mt-5 max-sm:gap-2 focus:outline-none'>
-					<Button
-						className='w-fit'
-						color='primary'
-						variant='shadow'
-						size='sm'
-						onClick={() => setActiveItem(null)}
-					>
-						All menu
-					</Button>
+					{activeItem && (
+						<Button
+							className='w-fit'
+							color='primary'
+							variant='shadow'
+							size='sm'
+							onClick={() => setActiveItem(null)}
+						>
+							All menu
+						</Button>
+					)}
 
 					<Input
-						startContent={<BiSearch className='w-5 h-5 text-slate-500' />}
+						startContent={
+							<BiSearch className='w-5 h-5 text-slate-500 dark:text-gray-100' />
+						}
 						autoFocus
 						variant='bordered'
 						color='primary'
 						placeholder='search by name...'
 						size='md'
-						className='w-[300px]'
+						className='w-[300px] dark:text-gray-100 dark:placeholder:text-gray-100  ml-auto'
 						value={searhItem}
 						onChange={(e) => setSearchItem(e.target.value)}
 					/>

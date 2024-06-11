@@ -43,7 +43,7 @@ const Home = () => {
 				isOpen={isOpen}
 			/>
 			{toggle && <CardLists onOpen={onOpen} isOpen={isOpen} />}
-			<main className='w-full pb-5 bg-gray-100'>
+			<main className='w-full pb-5 bg-gray-100 dark:bg-slate-800 dark:text-gray-200'>
 				<section className='relative flex w-full bg-center bg-cover min-h-[80vh] lg:pb-20 max-sm:items-center sm:pb-0 lg:items-end text-white md:px-8 lg:px-10 hero max-sm:px-2'>
 					<div className='z-10'>
 						<h2 className='font-semibold text-gray-100 lg:text-7xl max-md:text-[2rem]'>

@@ -31,15 +31,17 @@ const ProductComments = ({ productId }: ProductCommentsProps) => {
 		fetchComments();
 	}, [productId]);
 	return (
-		<div className='w-[60%]'>
+		<div className='grid w-1/2 grid-cols-2 gap-3 mt-9'>
 			{comments.length === 0 ? (
-				<h1 className='text-2xl font-semibold text-center'>Aucun commentaire sur ce produit!!</h1>
+				<h1 className='text-2xl font-semibold text-center'>
+					Aucun commentaire sur ce produit!!
+				</h1>
 			) : (
 				<>
 					{comments.map((comment, index) => (
 						<Card
 							key={index}
-							className='h-[120px] mb-4'
+							className='h-[124px] dark:bg-slate-900 dark:text-gray-100 rounded-md'
 							shadow='sm'
 							radius='none'
 						>

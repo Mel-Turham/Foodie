@@ -56,7 +56,7 @@ const Contact = () => {
 			);
 	};
 	return (
-		<section className='grid h-screen grid-cols-2 gap-5 p-20 text-gray-900 10 mt-14 max-lg:px-5 place-content-center max-sm:grid-cols-1 max-md:px-2'>
+		<section className='grid h-screen grid-cols-2 gap-5 p-20 text-gray-900 dark:bg-slate-800 10 mt-14 max-lg:px-5 place-content-center max-sm:grid-cols-1 max-md:px-2'>
 			<div className='object-cover w-full h-full max-md:hidden'>
 				<iframe
 					className='w-full h-full'
@@ -65,11 +65,11 @@ const Contact = () => {
 			</div>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className='w-full p-6 space-y-6 shadow rounde bg-indigo-50'
+				className='w-full p-6 space-y-6 shadow rounde bg-indigo-50 dark:bg-slate-900 dark:text-gray-100'
 			>
 				<h2 className='w-full text-3xl font-bold leading-tight'>Contact us</h2>
 				<div>
-					<label htmlFor='name' className='block mb-1 ml-1'>
+					<label htmlFor='name' className='block mb-3 ml-1'>
 						Name
 					</label>
 					<input
@@ -77,12 +77,12 @@ const Contact = () => {
 						type='text'
 						placeholder='Your name'
 						{...register('name')}
-						className='block w-full p-2 border-2 border-gray-800 border-solid rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
+						className='block w-full p-2 border-2 border-gray-800 border-solid rounded focus:outline-none focus:ring focus:ring-violet-400 dark:bg-slate-950'
 					/>
 					<span className='block text-red-600'>{errors?.name?.message}</span>
 				</div>
 				<div>
-					<label htmlFor='subject' className='block mb-1 ml-1'>
+					<label htmlFor='subject' className='block mb-3 ml-1'>
 						Subject
 					</label>
 					<input
@@ -90,26 +90,26 @@ const Contact = () => {
 						type='text'
 						placeholder='Your subject'
 						{...register('subject')}
-						className='block w-full p-2 border-2 border-gray-800 border-solid rounded focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
+						className='block w-full p-2 border-2 border-gray-800 border-solid rounded focus:outline-none focus:ring focus:ring-violet-400 dark:bg-slate-950'
 					/>
 					<span className='block text-red-600'>{errors?.subject?.message}</span>
 				</div>
 				<div>
-					<label htmlFor='message' className='block mb-1 ml-1'>
+					<label htmlFor='message' className='block mb-3 ml-1'>
 						Message
 					</label>
 					<textarea
 						id='message'
 						placeholder='Message...'
 						{...register('message')}
-						className='block w-full p-2 border-2 border-gray-800 border-solid rounded resize-none autoexpand focus:outline-none focus:ring focus:ring-opacity-25 focus:ring-violet-400'
+						className='block w-full p-2 border-2 border-gray-800 border-solid rounded resize-none autoexpand focus:outline-none focus:ring focus:ring-violet-400 dark:bg-slate-950'
 					></textarea>
 					<span className='block text-red-600'>{errors?.message?.message}</span>
 				</div>
 				<div>
 					<button
 						type='submit'
-						className='w-full px-4 py-2 font-bold text-gray-900 rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 bg-violet-400 focus:ring-violet-400 hover:ring-violet-400'
+						className='w-full px-4 py-2 font-bold text-gray-900 rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 bg-violet-400 focus:ring-violet-400 hover:ring-violet-400 dark:bg-slate-700 dark:text-gray-100'
 					>
 						{isLoading ? <Spinner color='default' /> : 'Send'}
 					</button>
