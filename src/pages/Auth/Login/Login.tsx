@@ -50,8 +50,8 @@ const Login = () => {
 		}
 	};
 	return (
-		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300 dark:bg-gradient-to-tr dark:from-slate-900 dark:to-slate-700'>
-			<div className='w-full max-w-md p-8 space-y-3 bg-white rounded-xl dark:bg-slate-900 dark:text-gray-100'>
+		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300 dark:bg-gradient-to-tr dark:from-slate-900 dark:to-slate-700 max-md:px-2'>
+			<div className='w-full max-w-md p-8 space-y-3 bg-white rounded-xl dark:bg-slate-900 dark:text-gray-100 max-md:px-4'>
 				<h1 className='mb-4 text-3xl font-bold'>Login</h1>
 				<form className='space-y-2' onSubmit={handleSubmit(onSubmit)}>
 					<div className='space-y-1 text-sm'>
@@ -63,6 +63,7 @@ const Login = () => {
 							id='email'
 							placeholder='Email'
 							{...register('email')}
+							autoFocus
 							className='w-full px-4 py-3 border-2 border-gray-900 border-solid rounded-md focus:dark:border-violet-600 dark:bg-slate-900 dark:border-gray-200'
 						/>
 						<span className='block text-sm text-red-600'>

@@ -86,7 +86,7 @@ const Register = () => {
 		}
 	};
 	return (
-		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300 dark:bg-gradient-to-tr dark:from-slate-900 dark:to-slate-700'>
+		<section className='flex items-center justify-center w-full min-h-screen bg-gradient-to-br from-indigo-50 to-blue-300 dark:bg-gradient-to-tr dark:from-slate-900 dark:to-slate-700 max-md:px-2.5'>
 			<div className='w-full max-w-md p-8 space-y-3 bg-white rounded-xl dark:bg-slate-900 dark:text-gray-100'>
 				<h1 className='text-2xl font-bold'>Register</h1>
 				<form className='space-y-2' onSubmit={handleSubmit(onSubmit)}>

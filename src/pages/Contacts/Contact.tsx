@@ -56,7 +56,7 @@ const Contact = () => {
 			);
 	};
 	return (
-		<section className='grid h-screen grid-cols-2 gap-5 p-20 text-gray-900 dark:bg-slate-800 10 mt-14 max-lg:px-5 place-content-center max-sm:grid-cols-1 max-md:px-2'>
+		<section className='grid grid-cols-2 gap-5 p-20 text-gray-900 lg:min-h-screen dark:bg-slate-800 10 mt-14 max-lg:px-5 place-items-center max-sm:grid-cols-1 max-md:px-2'>
 			<div className='object-cover w-full h-full max-md:hidden'>
 				<iframe
 					className='w-full h-full'
@@ -109,7 +109,7 @@ const Contact = () => {
 				<div>
 					<button
 						type='submit'
-						className='w-full px-4 py-2 font-bold text-gray-900 rounded shadow focus:outline-none focus:ring hover:ring focus:ring-opacity-50 bg-violet-400 focus:ring-violet-400 hover:ring-violet-400 dark:bg-slate-700 dark:text-gray-100'
+						className='block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600 dark:text-gray-100'
 					>
 						{isLoading ? <Spinner color='default' /> : 'Send'}
 					</button>

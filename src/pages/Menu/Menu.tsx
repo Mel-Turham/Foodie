@@ -66,7 +66,7 @@ const Menu = () => {
 
 	return (
 		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100 dark:bg-slate-800 dark:text-gray-100'>
-			<section className='flex flex-col lg:justify-end lg:min-h-[70vh] lg:px-10 py-5 max-md:px-5'>
+			<section className='flex flex-col lg:justify-end lg:min-h-[70vh] lg:px-10 py-5 max-md:px-5 max-md:min-h-[50vh] max-md:mt-10 max-md:justify-center'>
 				<div className='max:md-px-5'>
 					<h1 className='text-4xl font-semibold'>Explore our menu</h1>
 					<p className='lg:w-[700px] mt-4 text-pretty'>
@@ -115,7 +115,7 @@ const Menu = () => {
 						color='primary'
 						placeholder='search by name...'
 						size='md'
-						className='w-[300px] dark:text-gray-100 dark:placeholder:text-gray-100  ml-auto'
+						className='w-[300px] max-sm:w-full dark:text-gray-100 dark:placeholder:text-gray-100  ml-auto'
 						value={searhItem}
 						onChange={(e) => setSearchItem(e.target.value)}
 					/>

@@ -6,33 +6,40 @@ import { Button } from '@nextui-org/react';
 import useCartStore from '../../store/useCartStore';
 import CommentForm from '../../Components/CommentForm';
 import ProductComments from '../../Components/ProductComments';
+import * as z from 'zod';
 
-type PlatType = {
-	id: string;
-	name: string;
-	description: string;
-	price: number;
-	category: string;
-	image: string;
-};
+const schemaFood = z.object({
+	id: z.number(),
+	name: z.string(),
+	description: z.string(),
+	price: z.number(),
+	category: z.string(),
+	image: z.string(),
+	quantity: z.number(),
+});
+
+type IFood = z.infer<typeof schemaFood>;
+
 const PlatDetails = () => {
 	const { id } = useParams<{ id: string }>();
 	const addToCart = useCartStore((state) => state.addToCart);
-	const [plat, setPlat] = useState<PlatType>();
+	const [plat, setPlat] = useState<IFood>();
 	useEffect(() => {
 		const fecthPlat = async () => {
-			const request = await axios.get(`http://localhost:8000/food_list/${id}`);
-			const response = await request.data;
+			const request = await axios.get<IFood>(
+				`http://localhost:8000/food_list/${id}`,
+			);
+			const response = request.data;
 			setPlat(response);
 		};
 		fecthPlat();
 	}, [id]);
 
 	return (
-		<main className=' min-h-[100vh] bg-gray-100 pt-10  flex items-center justify-center  dark:bg-slate-800 dark:text-gray-100'>
-			<section className='flex flex-col justify-center w-full mt-10'>
-				<div className='flex justify-center gap-3'>
-					<figure className='w-[520px] h-[250px] overflow-hidden'>
+		<main className=' min-h-[100vh] bg-gray-100 lg:pt-10 max-md:pt-16  flex items-center justify-center  dark:bg-slate-800 dark:text-gray-100'>
+			<section className='flex flex-col w-full lg:justify-center lg:mt-10'>
+				<div className='flex gap-1 justify-between max-md:ps-2.5 flex-wrap  w-full my-4 max-md:mt-5 max-md:items-center lg:px-20 '>
+					<figure className='lg:w-[522px] lg:h-[250px] w-auto h-auto overflow-hidden'>
 						<img
 							src={plat?.image}
 							alt={plat?.name}
@@ -40,8 +47,8 @@ const PlatDetails = () => {
 							className='object-cover w-full h-full'
 						/>
 					</figure>
-					<div className='flex flex-col gap-3 ml-5'>
-						<h2 className='text-3xl font-semibold'>{plat?.name}</h2>
+					<div className='flex flex-col lg:gap-3 lg:ml-6 me-auto'>
+						<h2 className='font-semibold lg:text-3xl'>{plat?.name}</h2>
 						<div className='flex items-center justify-between w-[25%] text-default-500 text-[16.5px]'>
 							<div className='flex text-orange-600'>
 								<IoMdStar className='w-6 h-6' />
@@ -50,26 +57,28 @@ const PlatDetails = () => {
 							</div>
 							<span>(122)</span>
 						</div>
-						<p className='flex items-center gap-4 text-2xl font-semibold uppercase'>
+						<p className='flex items-center gap-4 font-semibold uppercase lg:text-2xl'>
 							<span className='line-through'>2000fcfa</span>
 							<span>{plat?.price}fcfa</span>
 						</p>
-						<p className='text-[18px]'>{plat?.description}</p>
+						<p className='sm:text-[13px] lg:text-[18px]  max-md:mb-2 lg:max-w-[300px]'>
+							{plat?.description}
+						</p>
 						<Button
 							color='primary'
 							radius='none'
 							className='w-fit'
 							variant='solid'
-							onClick={() => addToCart(plat)}
+							onClick={() => addToCart({ ...(plat as IFood) })}
 						>
 							Add to cart
 						</Button>
 					</div>
 				</div>
 				{/* comments section */}
-				<div className='flex justify-between w-full px-20 my-4'>
-					<CommentForm productId={parseInt(id, 10)} />
-					<ProductComments productId={parseInt(id, 10)} />
+				<div className='flex flex-wrap justify-between w-full my-4 max-md:mt-1 max-md:items-center lg:px-20'>
+					<CommentForm productId={parseInt(id as string, 10)} />
+					<ProductComments productId={parseInt(id as string, 10)} />
 				</div>
 			</section>
 		</main>
