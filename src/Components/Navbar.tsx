@@ -22,6 +22,7 @@ import { LuLogOut } from 'react-icons/lu';
 import { CgClose } from 'react-icons/cg';
 import { HiMenuAlt2 } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
+import ButtonToggleTheme from './ButtonToggleTheme';
 interface LinksProps {
 	path: string;
 	label: string;
@@ -91,10 +92,10 @@ const Navbar = () => {
 						isIconOnly={true}
 						size='sm'
 						radius='full'
-						className='p-1'
+						className='p-1 '
 						onClick={() => setIsOpen(false)}
 					>
-						<CgClose className='font-bold text-[29px] cursor-pointer text-slate-900' />
+						<CgClose className='font-bold text-[29px] cursor-pointer dark:text-white shadow-lg' />
 					</Button>
 				</div>
 				{Links.map((link) => {
@@ -114,7 +115,7 @@ const Navbar = () => {
 				})}
 
 				{user ? (
-					<div className='flex items-center mt-auto'>
+					<div className='flex items-center justify-between mt-auto'>
 						<Dropdown
 							placement='bottom-start'
 							size='sm'
@@ -157,20 +158,24 @@ const Navbar = () => {
 								</DropdownItem>
 							</DropdownMenu>
 						</Dropdown>
+						<ButtonToggleTheme />
 					</div>
 				) : (
-					<Link to='/login'>
-						<Button
-							size='sm'
-							variant='ghost'
-							className='font-semibold'
-							color='primary'
+					<Button
+						size='sm'
+						className='flex items-center justify-between py-3 mt-auto bg-transparent'
+					>
+						<Link
+							to='/login'
+							className='font-semibold w-[200px] py-3 bg-blue-500 rounded-lg'
 						>
 							Login
-						</Button>
-					</Link>
+						</Link>
+						<ButtonToggleTheme className='' />
+					</Button>
 				)}
 			</nav>
+
 			<div className='flex items-center justify-center max-md:justify-between gap-5 max-md:max-w-[20%] max-md:gap-4'>
 				<div
 					className='relative flex items-center justify-center w-6 h-6 cursor-pointer'
@@ -196,7 +201,7 @@ const Navbar = () => {
 					className='md:hidden'
 					onClick={() => setIsOpen(true)}
 				>
-					<HiMenuAlt2 className='text-slate-900 text-[19px] font-bold cursor-pointer' />
+					<HiMenuAlt2 className='text-slate-900 text-[19px] font-bold cursor-pointer dark:text-white shadow-lg' />
 				</Button>
 
 				{user ? (
@@ -256,6 +261,8 @@ const Navbar = () => {
 						</Button>
 					</Link>
 				)}
+
+				<ButtonToggleTheme />
 			</div>
 		</header>
 	);
