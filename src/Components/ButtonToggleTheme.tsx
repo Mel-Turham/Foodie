@@ -6,7 +6,7 @@ export default function ButtonToggleTheme({className}:{className?:string}) {
 	const { theme, toggleTheme } = useTheme();
 	return (
 		<Button
-			onClick={toggleTheme}
+			onPress={toggleTheme}
 			size='sm'
 			radius='full'
 			isIconOnly
