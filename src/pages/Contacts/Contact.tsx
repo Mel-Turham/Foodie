@@ -56,16 +56,10 @@ const Contact = () => {
 			);
 	};
 	return (
-		<section className='grid grid-cols-2 gap-5 p-20 text-gray-900 lg:min-h-screen dark:bg-slate-800 10 mt-14 max-lg:px-5 place-items-center max-sm:grid-cols-1 max-md:px-2'>
-			<div className='object-cover w-full h-full max-md:hidden'>
-				<iframe
-					className='w-full h-full'
-					src='https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=ndongbon%20douala+(My%20Business%20Name)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed'
-				></iframe>
-			</div>
+		<section className='flex items-center  max-md:px-2 lg:px-10 text-gray-900 dark:bg-slate-800 min-h-[calc(100vh-70px)] mt-[50px] justify-center max-md:items-end max-md:mt-0 '>
 			<form
 				onSubmit={handleSubmit(onSubmit)}
-				className='w-full p-6 space-y-6 shadow rounde bg-indigo-50 dark:bg-slate-900 dark:text-gray-100'
+				className='w-[37rem] p-6 space-y-3 shadow rounde bg-indigo-50 dark:bg-slate-900 dark:text-gray-100 max-md:mb-4'
 			>
 				<h2 className='w-full text-3xl font-bold leading-tight'>Contact us</h2>
 				<div>
@@ -102,14 +96,14 @@ const Contact = () => {
 						id='message'
 						placeholder='Message...'
 						{...register('message')}
-						className='block w-full p-2 border-2 border-gray-800 border-solid rounded resize-none autoexpand focus:outline-none focus:ring focus:ring-violet-400 dark:bg-slate-950'
+					className='block w-full lg:h-[7rem] p-2 border-2 border-gray-800 border-solid rounded resize-none autoexpand focus:outline-none focus:ring focus:ring-violet-400 dark:bg-slate-950'
 					></textarea>
 					<span className='block text-red-600'>{errors?.message?.message}</span>
 				</div>
 				<div>
 					<button
 						type='submit'
-						className='block w-full p-3 text-center rounded-sm text-gray-50 bg-violet-600 dark:text-gray-100'
+						className='block w-full p-2 mt-5 text-center rounded-sm text-gray-50 bg-violet-600 dark:text-gray-100'
 					>
 						{isLoading ? <Spinner color='default' /> : 'Send'}
 					</button>

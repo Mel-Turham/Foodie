@@ -43,11 +43,12 @@ const Home = () => {
 				isOpen={isOpen}
 			/>
 			{toggle && <CardLists onOpen={onOpen} isOpen={isOpen} />}
-			<main className='w-full pb-5 bg-gray-100 dark:bg-slate-800 dark:text-gray-200'>
+			<main className='w-full pb-1 bg-gray-100 dark:bg-slate-800 dark:text-gray-200'>
 				<section className='relative flex w-full bg-center bg-cover min-h-[80svh] lg:pb-20 max-sm:items-center sm:pb-0 lg:items-end text-white md:px-8 lg:px-10 hero max-sm:px-2.5 md:items-center'>
 					<div className='z-10'>
 						<h2 className='font-semibold text-gray-100 lg:text-7xl max-md:text-[2.2rem] text-balance max-md:text-nowrap max-sm:text-[1.9rem] md:text-6xl'>
-							Commande ta <span className='text-orange-500'>nourriture</span> <br /> favorite ici!
+							Commande ta <span className='text-orange-500'>nourriture</span>{' '}
+							<br /> favorite ici!
 						</h2>
 						<p className='lg:w-[600px]  max-md:my-4 text-pretty md:my-6 md:text-[1.6rem] md:text-gray-200 lg:text-medium'>
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
@@ -63,11 +64,11 @@ const Home = () => {
 					</div>
 				</section>
 				<section className='my-8 max-md:px-2 '>
-					<h3 className='mb-4 text-3xl font-bold md:pl-7 lg:pl-4 max-md:w-auto lg:w-fit'>
+					<h3 className='mb-4 text-3xl font-bold md:pl-7 lg:pl-8 max-md:w-auto lg:w-fit'>
 						<span className='text-orange-600'>Meilleurs </span> repas pres de
 						chez vous!!
 					</h3>
-					<div className='gap-2 lg:items-center lg:flex-wrap lg:flex md:grid lg:justify-center md:grid-cols-2 md:px-6 lg:px-4'>
+					<div className='grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center lg:px-8'>
 						{plats.map((plat) => {
 							return (
 								<Cart

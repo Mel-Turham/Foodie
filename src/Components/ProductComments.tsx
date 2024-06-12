@@ -31,7 +31,7 @@ const ProductComments = ({ productId }: ProductCommentsProps) => {
 		fetchComments();
 	}, [productId]);
 	return (
-		<div className='grid w-1/2 grid-cols-2 gap-3 mt-9 max-md:w-full max-md:px-2.5'>
+		<div className='grid lg:w-1/2 grid-cols-2 gap-3 mt-9 max-md:w-full max-md:px-2.5 md:w-full max-md:grid-cols-1'>
 			{comments.length === 0 ? (
 				<h1 className='text-2xl font-semibold text-center'>
 					Aucun commentaire sur ce produit!!

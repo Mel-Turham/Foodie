@@ -57,7 +57,7 @@ const CommentForm = ({ productId }: CommentFormProps) => {
 		}
 	};
 	return (
-		<form className='w-[522px]  max-md:w-full  max-md:px-1.5' onSubmit={handleSubmit(onSubmit)}>
+		<form className='lg:w-[522px]  max-md:w-full md:w-full  max-md:px-1.5' onSubmit={handleSubmit(onSubmit)}>
 			<div className='flex flex-col justify-center gap-2'>
 				<h3 className='text-2xl font-bold '>Add a comments🧑‍💻</h3>
 				<textarea

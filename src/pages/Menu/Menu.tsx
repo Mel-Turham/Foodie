@@ -66,8 +66,8 @@ const Menu = () => {
 
 	return (
 		<main className='flex flex-col w-full gap-5 pb-5 bg-gray-100 dark:bg-slate-800 dark:text-gray-100'>
-			<section className='flex flex-col lg:justify-end lg:min-h-[70vh] lg:px-10 py-5 max-md:px-5 max-md:min-h-[50vh] max-md:mt-10 max-md:justify-center'>
-				<div className='max:md-px-5'>
+			<section className='flex flex-col lg:justify-end md:min-h-[40vh] lg:min-h-[70vh] lg:px-10 py-5 max-md:px-3 max-md:min-h-[50vh] max-md:mt-20 max-md:justify-center md:px-6 md:mt-20 lg:mt-0'>
+				<div className='lg:px-5'>
 					<h1 className='text-4xl font-semibold'>Explore our menu</h1>
 					<p className='lg:w-[700px] mt-4 text-pretty'>
 						Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam
@@ -77,7 +77,7 @@ const Menu = () => {
 						beatae amet.
 					</p>
 				</div>
-				<div className='flex flex-col gap-2'>
+				<div className='flex flex-col gap-2 lg:px-2'>
 					<div className='flex items-center justify-between py-5 max-md:hidden'>
 						{menuList.map((itemList) => {
 							const { id, menu_image, menu_name } = itemList;
@@ -93,10 +93,10 @@ const Menu = () => {
 						})}
 					</div>
 				</div>
-				<div className='flex items-center justify-between max-md:mt-5 max-sm:gap-2 focus:outline-none'>
+				<div className='flex items-center justify-between max-md:mt-5 max-sm:gap-2 '>
 					{activeItem && (
 						<Button
-							className='w-fit'
+							className='w-fit focus:outline-none'
 							color='primary'
 							variant='shadow'
 							size='sm'
@@ -121,8 +121,9 @@ const Menu = () => {
 					/>
 				</div>
 			</section>
-			<section className=' max-md:px-2'>
-				<div className='flex flex-wrap items-center justify-center gap-2'>
+
+			<section className='w-full max-md:px-2'>
+				<div className='grid gap-3 lg:px-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center'>
 					{filtered.length > 0 ? (
 						filtered.map((plat) => (
 							<Cart

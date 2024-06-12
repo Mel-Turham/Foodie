@@ -198,7 +198,7 @@ const Navbar = () => {
 					isIconOnly={true}
 					size='sm'
 					radius='full'
-					className='md:hidden'
+					className='max:hidden md:hidden'
 					onClick={() => setIsOpen(true)}
 				>
 					<HiMenuAlt2 className='text-slate-900 text-[19px] font-bold cursor-pointer dark:text-white shadow-lg' />
@@ -253,7 +253,7 @@ const Navbar = () => {
 					<Button
 						size='sm'
 						variant='ghost'
-						className='font-semibold'
+						className='font-semibold max-md:hidden'
 						color='primary'
 					>
 						<Link to='/login'> Login</Link>

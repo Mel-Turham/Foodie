@@ -26,8 +26,8 @@ const MenuItem = ({
 		>
 			<Image
 				radius='full'
-				width={90}
-				height={90}
+				width={75}
+				height={75}
 				src={image}
 				loading='lazy'
 				alt={name}

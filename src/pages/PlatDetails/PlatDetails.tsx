@@ -37,9 +37,9 @@ const PlatDetails = () => {
 
 	return (
 		<main className=' min-h-[100vh] bg-gray-100 lg:pt-10 max-md:pt-16  flex items-center justify-center  dark:bg-slate-800 dark:text-gray-100'>
-			<section className='flex flex-col w-full lg:justify-center lg:mt-10'>
-				<div className='flex gap-1 justify-between max-md:ps-2.5 flex-wrap  w-full my-4 max-md:mt-5 max-md:items-center lg:px-20 '>
-					<figure className='lg:w-[522px] lg:h-[250px] w-auto h-auto overflow-hidden'>
+			<section className='flex flex-col w-full md:mt-20 lg:mt-10'>
+				<div className='flex justify-between w-full gap-1 my-4 max-md:mt-5 max-md:items-center md:items-start lg:px-20 max-md:px-2 md:px-7 md:gap-4 max-md:flex-wrap'>
+					<figure className='lg:w-[522px] lg:h-[250px] h-auto overflow-hidden max-md:w-full'>
 						<img
 							src={plat?.image}
 							alt={plat?.name}
@@ -47,8 +47,8 @@ const PlatDetails = () => {
 							className='object-cover w-full h-full'
 						/>
 					</figure>
-					<div className='flex flex-col lg:gap-3 lg:ml-6 me-auto'>
-						<h2 className='font-semibold lg:text-3xl'>{plat?.name}</h2>
+					<div className='flex flex-col lg:gap-3 lg:ml-6 me-auto md:gap-4'>
+						<h2 className='font-semibold lg:text-3xl md:text-2xl'>{plat?.name}</h2>
 						<div className='flex items-center justify-between w-[25%] text-default-500 text-[16.5px]'>
 							<div className='flex text-orange-600'>
 								<IoMdStar className='w-6 h-6' />
@@ -75,8 +75,14 @@ const PlatDetails = () => {
 						</Button>
 					</div>
 				</div>
+
+
+
+
+
+				
 				{/* comments section */}
-				<div className='flex flex-wrap justify-between w-full my-4 max-md:mt-1 max-md:items-center lg:px-20'>
+				<div className='flex flex-wrap justify-between w-full my-4 max-md:mt-1 max-md:items-center md:px-6 lg:px-20'>
 					<CommentForm productId={parseInt(id as string, 10)} />
 					<ProductComments productId={parseInt(id as string, 10)} />
 				</div>
