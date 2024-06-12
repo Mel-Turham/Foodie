@@ -49,7 +49,7 @@ const Home = () => {
 						<h2 className='font-semibold text-gray-100 lg:text-7xl max-md:text-[2.2rem] text-balance max-md:text-nowrap max-sm:text-[1.9rem] md:text-6xl'>
 							Commande ta <span className='text-orange-500'>nourriture</span> <br /> favorite ici!
 						</h2>
-						<p className='lg:w-[600px] lg:my-6 max-md:my-4 text-pretty md:my-6 md:text-[1.6rem] md:text-gray-200'>
+						<p className='lg:w-[600px]  max-md:my-4 text-pretty md:my-6 md:text-[1.6rem] md:text-gray-200 lg:text-medium'>
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
 							repellendus sequi optio praesentium voluptatem facilis deleniti
 							laboriosam? Modi, veniam laudantium distinctio, esse aliquam quae
@@ -67,7 +67,7 @@ const Home = () => {
 						<span className='text-orange-600'>Meilleurs </span> repas pres de
 						chez vous!!
 					</h3>
-					<div className='flex flex-wrap items-center gap-2 md:grid lg:justify-center md:grid-cols-2 md:px-6'>
+					<div className='gap-2 lg:items-center lg:flex-wrap lg:flex md:grid lg:justify-center md:grid-cols-2 md:px-6 lg:px-4'>
 						{plats.map((plat) => {
 							return (
 								<Cart

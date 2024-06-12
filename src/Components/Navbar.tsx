@@ -62,7 +62,7 @@ const Navbar = () => {
 	return (
 		<header className='fixed top-0 left-0 z-20 flex items-center justify-between w-full px-8 py-4 bg-white shadow-md dark:bg-gray-900 dark:text-white max-md:px-3.5'>
 			<h1 className='font-bold text-[1.7rem] w-fit'>Foodie</h1>
-			<nav className='lg:flex items-center justify-center gap-8 text-[16px] w-1/2 max-md:hidden'>
+			<nav className='flex items-center justify-center gap-8 text-[16px] w-1/2 max-md:hidden'>
 				{Links.map((link) => {
 					return (
 						<NavLink
