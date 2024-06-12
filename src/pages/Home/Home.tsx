@@ -44,30 +44,30 @@ const Home = () => {
 			/>
 			{toggle && <CardLists onOpen={onOpen} isOpen={isOpen} />}
 			<main className='w-full pb-5 bg-gray-100 dark:bg-slate-800 dark:text-gray-200'>
-				<section className='relative flex w-full bg-center bg-cover min-h-[80svh] lg:pb-20 max-sm:items-center sm:pb-0 lg:items-end text-white md:px-8 lg:px-10 hero max-sm:px-2.5'>
+				<section className='relative flex w-full bg-center bg-cover min-h-[80svh] lg:pb-20 max-sm:items-center sm:pb-0 lg:items-end text-white md:px-8 lg:px-10 hero max-sm:px-2.5 md:items-center'>
 					<div className='z-10'>
-						<h2 className='font-semibold text-gray-100 lg:text-7xl max-md:text-[2.2rem] text-balance max-md:text-nowrap max-sm:text-[1.9rem]'>
+						<h2 className='font-semibold text-gray-100 lg:text-7xl max-md:text-[2.2rem] text-balance max-md:text-nowrap max-sm:text-[1.9rem] md:text-6xl'>
 							Commande ta <span className='text-orange-500'>nourriture</span> <br /> favorite ici!
 						</h2>
-						<p className='lg:w-[600px] lg:my-6 max-md:my-4 text-pretty'>
+						<p className='lg:w-[600px] lg:my-6 max-md:my-4 text-pretty md:my-6 md:text-[1.6rem] md:text-gray-200'>
 							Lorem ipsum dolor sit, amet consectetur adipisicing elit. Facere
 							repellendus sequi optio praesentium voluptatem facilis deleniti
 							laboriosam? Modi, veniam laudantium distinctio, esse aliquam quae
 							possimus voluptas quam enim, minus neque.
 						</p>
 						<Link to='/menu'>
-							<Button className='font-medium text-white bg-orange-600'>
+							<Button className='font-medium text-white bg-orange-600 md:w-[200px] lg:w-auto'>
 								Voir les menus
 							</Button>
 						</Link>
 					</div>
 				</section>
-				<section className='my-8 max-md:px-2'>
-					<h3 className='mb-4 text-3xl font-bold lg:pl-4 max-md:w-auto lg:w-fit'>
+				<section className='my-8 max-md:px-2 '>
+					<h3 className='mb-4 text-3xl font-bold md:pl-7 lg:pl-4 max-md:w-auto lg:w-fit'>
 						<span className='text-orange-600'>Meilleurs </span> repas pres de
 						chez vous!!
 					</h3>
-					<div className='flex flex-wrap items-center justify-center gap-2'>
+					<div className='flex flex-wrap items-center gap-2 md:grid lg:justify-center md:grid-cols-2 md:px-6'>
 						{plats.map((plat) => {
 							return (
 								<Cart
