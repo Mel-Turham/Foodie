@@ -161,20 +161,20 @@ const Navbar = () => {
 						<ButtonToggleTheme />
 					</div>
 				) : (
-					<Button
-						size='sm'
+					<div
 						className='flex items-center justify-between py-3 mt-auto bg-transparent'
 					>
 						<Link
 							to='/login'
-							className='font-semibold w-[200px] py-3 bg-blue-500 rounded-lg'
+							className='font-semibold w-[200px] py-2 shadow-sm bg-blue-500 rounded-lg text-center text-xl text-white'
 						>
 							Login
 						</Link>
-						<ButtonToggleTheme className='' />
-					</Button>
+						<ButtonToggleTheme />
+					</div>
 				)}
 			</nav>
+			{/* responsive end */}
 
 			<div className='flex items-center justify-center max-md:justify-between gap-5 max-md:max-w-[20%] max-md:gap-4'>
 				<div
@@ -205,7 +205,7 @@ const Navbar = () => {
 				</Button>
 
 				{user ? (
-					<div className='flex items-center justify-center max-md:hidden'>
+					<div className='flex items-center justify-center max-md:hidden max-sm:hidden'>
 						<Dropdown
 							placement='bottom-start'
 							size='sm'
@@ -250,19 +250,17 @@ const Navbar = () => {
 						</Dropdown>
 					</div>
 				) : (
-					<Link to='/login'>
-						<Button
-							size='sm'
-							variant='ghost'
-							className='font-semibold'
-							color='primary'
-						>
-							Login
-						</Button>
-					</Link>
+					<Button
+						size='sm'
+						variant='ghost'
+						className='font-semibold'
+						color='primary'
+					>
+						<Link to='/login'> Login</Link>
+					</Button>
 				)}
 
-				<ButtonToggleTheme />
+				<ButtonToggleTheme className='max-sm:hidden' />
 			</div>
 		</header>
 	);
