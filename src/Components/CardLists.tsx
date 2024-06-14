@@ -36,13 +36,13 @@ const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 				key={item.id}
 			>
 				<Image width={55} radius='none' height={55} src={item.image} />
-				<p className='flex items-center justify-center font-semibold text-center capitalize '>
+				<p className='flex items-center font-semibold text-center capitalize lg:justify-center sm:justify-start'>
 					{item.name}
 				</p>
 				<p className='flex items-center justify-center font-semibold text-center text-medium'>
 					{item.price}
 				</p>
-				<div className='flex items-center justify-between gap-1'>
+				<div className='flex items-center lg:gap-1.5 lg:justify-between sm:justify-end sm:gap-3 gap-1'>
 					<Button
 						isIconOnly
 						radius='full'
@@ -65,7 +65,7 @@ const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 						<FaPlus className='w-2.5 h-2.5' />
 					</Button>
 				</div>
-				<div className='flex items-center justify-center'>
+				<div className='flex items-center md:justify-center sm:justify-end sm:mr-4 lg:mr-0 lg:ml-3 max-sm:justify-center'>
 					<Button
 						className=''
 						variant='bordered'
@@ -147,7 +147,7 @@ const CardLists = ({ onOpen, isOpen }: CardListsProps) => {
 						</div>
 						<div className='flex items-center justify-between py-2 font-semibold capitalize border-black border-solid border-b-1 '>
 							<p>image</p>
-							<p>Titre</p>
+							<p className='lg:ml-3'>Titre</p>
 							<p>Prix(Fcfa)</p>
 							<p>Qte</p>
 							<p>Remove</p>

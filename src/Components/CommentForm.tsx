@@ -14,7 +14,7 @@ const CommentSchema = z.object({
 type CommentFormValues = z.infer<typeof CommentSchema>;
 
 type CommentFormProps = {
-	productId: number | undefined;
+	productId: number;
 };
 
 const CommentForm = ({ productId }: CommentFormProps) => {
@@ -57,16 +57,24 @@ const CommentForm = ({ productId }: CommentFormProps) => {
 		}
 	};
 	return (
-		<form className='lg:w-[522px]  max-md:w-full md:w-full  max-md:px-1.5' onSubmit={handleSubmit(onSubmit)}>
+		<form
+			className='lg:w-[522px]  max-md:w-full md:w-full  max-md:px-1.5'
+			onSubmit={handleSubmit(onSubmit)}
+		>
 			<div className='flex flex-col justify-center gap-2'>
 				<h3 className='text-2xl font-bold '>Add a comments🧑‍💻</h3>
 				<textarea
 					{...register('comment')}
 					id='comment'
 					name='comment'
-					className='h-[119px] w-full resize-none px-4 py-2 border-1.5 border-solid border-slate-600 rounded-sm dark:bg-slate-900'
+					className='h-[119px] w-full resize-none px-4 py-2 border-1 border-solid border-slate-200 shadow-md rounded-sm dark:bg-slate-900 md:h-[150px] md:mb-5 lg:mb-2 ring-3 ring-gray-200 outline-none focus:ring-1 '
 				></textarea>
-				{errors?.comment?.message}
+				{errors?.comment?.message && (
+					<span className='font-medium text-red-600'>
+						{' '}
+						{errors?.comment?.message}
+					</span>
+				)}
 			</div>
 			<Button
 				type='submit'

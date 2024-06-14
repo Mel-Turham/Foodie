@@ -36,8 +36,8 @@ const PlatDetails = () => {
 	}, [id]);
 
 	return (
-		<main className=' min-h-[100vh] bg-gray-100 lg:pt-10 max-md:pt-16  flex items-center justify-center  dark:bg-slate-800 dark:text-gray-100'>
-			<section className='flex flex-col w-full md:mt-20 lg:mt-10'>
+		<main className=' min-h-[100vh] bg-gray-100 lg:pt-10 max-md:pt-16  flex justify-center  dark:bg-slate-800 dark:text-gray-100 md:pt-20'>
+			<section className='flex flex-col w-full lg:mt-10'>
 				<div className='flex justify-between w-full gap-1 my-4 max-md:mt-5 max-md:items-center md:items-start lg:px-20 max-md:px-2 md:px-7 md:gap-4 max-md:flex-wrap'>
 					<figure className='lg:w-[522px] lg:h-[250px] h-auto overflow-hidden max-md:w-full'>
 						<img

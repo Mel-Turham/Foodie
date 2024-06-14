@@ -123,7 +123,7 @@ const Menu = () => {
 			</section>
 
 			<section className='w-full max-md:px-2'>
-				<div className='grid gap-3 lg:px-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center'>
+				<div className='grid gap-3 lg:px-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center sm:px-4'>
 					{filtered.length > 0 ? (
 						filtered.map((plat) => (
 							<Cart

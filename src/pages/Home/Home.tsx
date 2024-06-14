@@ -68,7 +68,7 @@ const Home = () => {
 						<span className='text-orange-600'>Meilleurs </span> repas pres de
 						chez vous!!
 					</h3>
-					<div className='grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center lg:px-8'>
+					<div className='grid gap-3 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 place-items-center lg:px-8 sm:px-5'>
 						{plats.map((plat) => {
 							return (
 								<Cart

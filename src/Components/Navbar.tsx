@@ -129,7 +129,7 @@ const Navbar = () => {
 									avatarProps={{
 										isBordered: true,
 										src: user.avatar,
-										color: 'warning',
+										color: 'default',
 										size: 'sm',
 									}}
 									className='font-semibold transition-transform focus:outline-none'
@@ -161,9 +161,7 @@ const Navbar = () => {
 						<ButtonToggleTheme />
 					</div>
 				) : (
-					<div
-						className='flex items-center justify-between py-3 mt-auto bg-transparent'
-					>
+					<div className='flex items-center justify-between py-3 mt-auto bg-transparent'>
 						<Link
 							to='/login'
 							className='font-semibold w-[200px] py-2 shadow-sm bg-blue-500 rounded-lg text-center text-xl text-white'
