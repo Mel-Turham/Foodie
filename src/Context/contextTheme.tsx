@@ -1,5 +1,5 @@
 // src/ThemeContext.tsx
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 interface ThemeContextProps {
 	theme: 'light' | 'dark';
@@ -40,7 +40,7 @@ export const ThemeProvider= ({
 	}, [theme]);
 
 	const toggleTheme = () => {
-		setTheme((prevTheme) => (prevTheme === 'light' ? 'dark' : 'light'));
+		setTheme((prevTheme:typeof theme) => (prevTheme === 'light' ? 'dark' : 'light'));
 	};
 
 	return (

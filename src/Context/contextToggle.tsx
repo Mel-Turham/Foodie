@@ -24,7 +24,7 @@ export const ContextProvider = ({ children }: contextProviderType) => {
 // eslint-disable-next-line react-refresh/only-export-components
 export const useToggleContext = (): ContextType => {
 	const context = useContext(contextToggle);
-	if (context === undefined) {
+	if (!context) {
 		throw new Error('useToggleContext must be used within a ContextProvider');
 	}
 	return context;
